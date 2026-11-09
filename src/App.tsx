@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Header, AppTab } from './components/Header';
 import { ScenesTimelineTab } from './components/ScenesTimelineTab';
 import { VideoGeneratorTab, GeneratedVideoItem } from './components/VideoGeneratorTab';
-import { TeleprompterTab } from './components/TeleprompterTab';
+import { FrameDecomposerTab } from './components/FrameDecomposerTab';
 import { EncapsulationVisualizerTab } from './components/EncapsulationVisualizerTab';
 import { TroubleshootingTab } from './components/TroubleshootingTab';
 import { SlidesExportTab } from './components/SlidesExportTab';
@@ -28,6 +28,64 @@ export default function App() {
   // When user clicks "Cartesia TTS" on a scene card
   const handleSelectSceneForCartesia = (scene: PresentationScene) => {
     setSelectedSceneForCartesia(scene);
+    setActiveTab('cartesia');
+  };
+
+  // When user navigates from 1 FPS Frame Decomposer to Gemini Omni Video
+  const handleSelectFramePromptForVideo = (promptText: string) => {
+    const frameScene: PresentationScene = {
+      id: `custom-frame-${Date.now()}`,
+      sceneNumber: 99,
+      title: 'Frame-Exakter Replikations-Prompt',
+      speaker: '1:1 Frame Replikation',
+      speakerRole: 'Replikation',
+      speakerColor: 'border-cyan-500',
+      timeStart: '00:00',
+      timeEnd: '00:05',
+      startSeconds: 0,
+      endSeconds: 5,
+      durationSeconds: 5,
+      layers: [1, 2, 3, 4, 5, 6, 7],
+      slides: 'Frame 1:1',
+      topic: '1 FPS Replikation',
+      scriptText: promptText,
+      cues: [],
+      directorNotes: '1 FPS Replikation',
+      aiVideoPrompt: promptText,
+      spokenScript: promptText,
+      description: promptText,
+      cartesiaVoiceId: 'german-narrator'
+    };
+    setSelectedSceneForVideo(frameScene);
+    setActiveTab('video-gen');
+  };
+
+  // When user navigates from 1 FPS Frame Decomposer to Cartesia TTS
+  const handleSelectFrameTextForCartesia = (text: string) => {
+    const frameScene: PresentationScene = {
+      id: `custom-cartesia-${Date.now()}`,
+      sceneNumber: 99,
+      title: 'Transkript-Schnipsel',
+      speaker: 'Cartesia Voice',
+      speakerRole: 'Audio-Generierung',
+      speakerColor: 'border-amber-500',
+      timeStart: '00:00',
+      timeEnd: '00:05',
+      startSeconds: 0,
+      endSeconds: 5,
+      durationSeconds: 5,
+      layers: [1, 2, 3, 4, 5, 6, 7],
+      slides: 'Cartesia Prompt',
+      topic: 'Cartesia Sonic Audio-Generierung',
+      scriptText: text,
+      cues: [],
+      directorNotes: 'Cartesia Sonic Audio-Generierung',
+      aiVideoPrompt: '',
+      spokenScript: text,
+      description: text,
+      cartesiaVoiceId: 'german-moderator'
+    };
+    setSelectedSceneForCartesia(frameScene);
     setActiveTab('cartesia');
   };
 
@@ -69,6 +127,14 @@ export default function App() {
           />
         )}
 
+        {activeTab === 'frame-decomposer' && (
+          <FrameDecomposerTab
+            scenes={studioScenes}
+            onNavigateToVideoGen={handleSelectFramePromptForVideo}
+            onNavigateToCartesia={handleSelectFrameTextForCartesia}
+          />
+        )}
+
         {activeTab === 'cartesia' && (
           <CartesiaStudioTab
             currentScenes={studioScenes}
@@ -95,8 +161,6 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'teleprompter' && <TeleprompterTab scenes={studioScenes} />}
-
         {activeTab === 'encapsulation' && <EncapsulationVisualizerTab />}
 
         {activeTab === 'troubleshooting' && <TroubleshootingTab />}
@@ -115,7 +179,7 @@ export default function App() {
             <span>YouTube Decomposer &bull; Cartesia TTS &bull; Gemini Omni 1.1 Flash</span>
           </div>
           <div className="flex items-center gap-4 text-slate-400">
-            <span>{isCustomSource ? `${studioScenes.length} Segmente geladen` : 'Patrick • Bastian • Issa • Thomas • Adem'}</span>
+            <span>{isCustomSource ? `${studioScenes.length} Segmente geladen` : 'Schichten 1–7 • Kapselung • Troubleshooting'}</span>
             <span className="font-mono text-amber-500/80">
               Gesamt: {studioScenes.reduce((acc, s) => acc + s.durationSeconds, 0)}s
             </span>

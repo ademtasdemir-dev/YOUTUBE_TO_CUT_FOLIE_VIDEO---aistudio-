@@ -29,7 +29,7 @@ export const SlidesExportTab: React.FC = () => {
     'Video ist exakt 1280 × 720 px (720p)',
     'Seitenverhältnis ist 16:9',
     'Länge überschreitet nicht 12:00 Minuten (Punktlandung)',
-    'Jeder Sprecher (Patrick, Bastian, Issa, Thomas, Adem) hat seinen festen Part',
+    'Jeder Themenbereich (Schichten 1 bis 7, Kapselung, Troubleshooting) ist abgedeckt',
     'Kein Dazwischenreden / saubere Audioübergaben',
     'Übergänge und Cues sind klar definiert',
     'Folien sind in 720p gut lesbar (Schriftgröße ca. 28–32px)',
@@ -38,7 +38,7 @@ export const SlidesExportTab: React.FC = () => {
     'Kapselungs-Prinzip visuell animiert erklärt',
     'Troubleshooting-Checkliste von Schicht 1 aufwärts erklärt',
     'Audiopegel bei ca. -16 LUFS (Stereo, 48 kHz AAC)',
-    'Ende mit Dankesfolie und Teamnamen',
+    'Ende mit Dankesfolie und Abschlussübersicht',
     'Export-Codec: H.264 / AVC in MP4-Container'
   ];
 
@@ -124,7 +124,7 @@ export const SlidesExportTab: React.FC = () => {
           {/* Slide Footer */}
           <div className="relative z-10 pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-400">
             <div>FISI Umschulung &bull; Comcave</div>
-            <div className="text-slate-300 font-medium">Team: Patrick, Bastian, Issa, Thomas, Adem</div>
+            <div className="text-slate-300 font-medium">IHK-Fachinformatik &bull; Systemintegration</div>
             <div>OSI-Modell 720p</div>
           </div>
         </div>

@@ -48,6 +48,12 @@ export interface PresentationScene {
   cartesiaPrompt?: CartesiaPrompt;
   youtubeSourceUrl?: string;
   youtubeVideoId?: string;
+  spokenScript?: string;
+  timeCode?: string;
+  description?: string;
+  layerFocus?: string;
+  geminiPrompt?: string;
+  cartesiaVoiceId?: string;
 }
 
 export interface OSILayer {
@@ -197,21 +203,21 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     layers: [],
     slides: "Folie 1: Titelfolie",
     topic: "Titelfolie, Team Comcave, OSI-Modell Schichtenmodell der Netzwerkkommunikation",
-    scriptText: "[Kein Sprechtext – Ruhige Technik-Hintergrundmusik, sanfter Fade-In über 1 Sekunde]\n\nEinblendung Titelfolie:\nOSI-Modell – Schichtenmodell der Netzwerkkommunikation\nFISI Umschulung – Comcave\nPräsentation: Patrick, Bastian, Issa, Thomas, Adem",
-    directorNotes: "Kein Sprechen. Nur ruhige Musik oder Stille. Die Folie soll ruhig und professionell wirken. Nach 18 Sekunden direkter harter Schnitt zu Patrick.",
+    scriptText: "[Kein Sprechtext – Ruhige Technik-Hintergrundmusik, sanfter Fade-In über 1 Sekunde]\n\nEinblendung Titelfolie:\nOSI-Modell – Schichtenmodell der Netzwerkkommunikation\nFISI Umschulung – Comcave\nIHK-Prüfungsvorbereitung: Systemintegration",
+    directorNotes: "Kein Sprechen. Nur ruhige Musik oder Stille. Die Folie soll ruhig und professionell wirken. Nach 18 Sekunden direkter harter Schnitt zur Einleitung.",
     cues: [
       { timeOffset: "00:00", label: "Schwarzer Fade-in über 1 Sekunde" },
       { timeOffset: "00:05", label: "Titelfolie erscheint zentral" },
-      { timeOffset: "00:10", label: "Team-Layout einblenden (Patrick, Bastian, Issa, Thomas, Adem)" },
-      { timeOffset: "00:18", label: "Harter Schnitt auf Patrick" }
+      { timeOffset: "00:10", label: "Themen-Layout einblenden (Schichten 1 bis 7, Kapselung, Troubleshooting)" },
+      { timeOffset: "00:18", label: "Harter Schnitt auf Sprecher 1" }
     ],
-    aiVideoPrompt: "Create a professional German IT training video intro in 720p, 16:9, 30 fps. Dark blue and anthrazit background with glowing geometric network lines and cyber particles. Central clean slide appears with bold white text: 'OSI-Modell – Schichtenmodell der Netzwerkkommunikation' and underneath 'FISI Umschulung – Comcave'. Team names appear: Patrick, Bastian, Issa, Thomas, Adem. Calm corporate IT aesthetic, high quality 720p educational presentation."
+    aiVideoPrompt: "Create a professional German IT training video intro in 720p, 16:9, 30 fps. Dark blue and anthrazit background with glowing geometric network lines and cyber particles. Central clean slide appears with bold white text: 'OSI-Modell – Schichtenmodell der Netzwerkkommunikation' and underneath 'FISI Umschulung – Comcave'. Calm corporate IT aesthetic, high quality 720p educational presentation."
   },
   {
     id: "scene-1",
     sceneNumber: 1,
-    title: "Szene 1: Patrick – Begrüßung & Anwendungsschicht",
-    speaker: "Patrick",
+    title: "Szene 1: Sprecher 1 – Begrüßung & Anwendungsschicht",
+    speaker: "Sprecher 1",
     speakerRole: "Einleitung & Layer 7",
     speakerColor: "from-red-900/60 to-red-950/80 border-red-500",
     timeStart: "00:18",
@@ -222,9 +228,9 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     layers: [7],
     slides: "Folie 1–3 und Folie 8",
     topic: "Einführung, ISO 1984, Schicht 7 (Application Layer)",
-    scriptText: "Guten Morgen zusammen.\n\nWir präsentieren euch heute das OSI-Modell.\n\nDas OSI-Modell wurde 1984 von der ISO entwickelt.\n\nDer Zweck war ganz klar: Computersysteme unterschiedlicher Hersteller sollten weltweit miteinander kommunizieren können – unabhängig davon, welche Hardware oder welches Betriebssystem eingesetzt wird.\n\nDas Modell besteht aus sieben Schichten.\n\nDiese sieben Schichten helfen uns dabei, Netzwerkkommunikation sauber zu strukturieren.\n\nIch starte direkt ganz oben, beim Benutzer, mit Schicht 7: der Anwendungsschicht, dem Application Layer.\n\nHier befinden sich die Protokolle, die unsere Programme nutzen.\n\nWenn ihr zum Beispiel eine Website öffnet, nutzt der Browser HTTP oder HTTPS.\n\nBei E-Mails kommt SMTP zum Einsatz.\n\nSchicht 7 ist also unser Tor zum Netzwerk.\n\nSie ist die Schicht, mit der Anwendungen wie Browser, E-Mail-Programme oder Dateiübertragungsprogramme direkt arbeiten.\n\nWichtig ist dabei: Die Anwendung selbst muss nicht wissen, wie die Daten physikalisch übertragen werden. Sie übergibt ihre Daten einfach an die nächste Schicht.\n\nUnd was passiert, nachdem wir die Daten abgeschickt haben?\n\nDas erklärt euch nun Bastian.",
-    transitionCue: "Das erklärt euch nun Bastian.",
-    directorNotes: "Patrick steht vor der Klasse oder neutraler Wand. Blick direkt in die Kamera. Bei erwähnten Begriffen Folien/Grafiken einblenden. Klare Übergabe ohne Pause direkt zum Schnitt.",
+    scriptText: "Guten Morgen zusammen.\n\nWir präsentieren euch heute das OSI-Modell.\n\nDas OSI-Modell wurde 1984 von der ISO entwickelt.\n\nDer Zweck war ganz klar: Computersysteme unterschiedlicher Hersteller sollten weltweit miteinander kommunizieren können – unabhängig davon, welche Hardware oder welches Betriebssystem eingesetzt wird.\n\nDas Modell besteht aus sieben Schichten.\n\nDiese sieben Schichten helfen uns dabei, Netzwerkkommunikation sauber zu strukturieren.\n\nIch starte direkt ganz oben, beim Benutzer, mit Schicht 7: der Anwendungsschicht, dem Application Layer.\n\nHier befinden sich die Protokolle, die unsere Programme nutzen.\n\nWenn ihr zum Beispiel eine Website öffnet, nutzt der Browser HTTP oder HTTPS.\n\nBei E-Mails kommt SMTP zum Einsatz.\n\nSchicht 7 ist also unser Tor zum Netzwerk.\n\nSie ist die Schicht, mit der Anwendungen wie Browser, E-Mail-Programme oder Dateiübertragungsprogramme direkt arbeiten.\n\nWichtig ist dabei: Die Anwendung selbst muss nicht wissen, wie die Daten physikalisch übertragen werden. Sie übergibt ihre Daten einfach an die nächste Schicht.\n\nUnd was passiert, nachdem wir die Daten abgeschickt haben?\n\nDas erklärt euch nun der nächste Themenbereich: Darstellung und Sitzung.",
+    transitionCue: "Das erklärt euch nun der nächste Themenbereich: Darstellung und Sitzung.",
+    directorNotes: "Sprecher 1 steht frontal zur Kamera. Klare Aussprache. Bei erwähnten Begriffen Folien/Grafiken einblenden. Klare Übergabe ohne Pause direkt zum Schnitt.",
     cues: [
       { timeOffset: "00:25", label: "„OSI-Modell“ groß auf Folie" },
       { timeOffset: "00:35", label: "„1984 – ISO“ Infografik" },
@@ -234,13 +240,13 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
       { timeOffset: "01:45", label: "Text: „Application Layer = Tor zum Netzwerk“" },
       { timeOffset: "02:10", label: "Übergangsgrafik: Pfeil nach unten zu Layer 6" }
     ],
-    aiVideoPrompt: "German IT presenter Patrick introduces the OSI model in a modern training seminar room. Slide shows 'OSI Model, 7 layers, ISO 1984'. Highlight Layer 7 Application Layer with clean animated icons for Web browser, Email, HTTP, HTTPS, SMTP. Lower third displaying 'Patrick - Einleitung & Layer 7'. Professional, calm, 720p, 16:9, educational style."
+    aiVideoPrompt: "German IT presenter introduces the OSI model in a modern training seminar room. Slide shows 'OSI Model, 7 layers, ISO 1984'. Highlight Layer 7 Application Layer with clean animated icons for Web browser, Email, HTTP, HTTPS, SMTP. Lower third displaying 'Sprecher 1 - Einleitung & Layer 7'. Professional, calm, 720p, 16:9, educational style."
   },
   {
     id: "scene-2",
     sceneNumber: 2,
-    title: "Szene 2: Bastian – Darstellungsschicht & Sitzungsschicht",
-    speaker: "Bastian",
+    title: "Szene 2: Sprecher 2 – Darstellungsschicht & Sitzungsschicht",
+    speaker: "Sprecher 2",
     speakerRole: "Layer 6 & Layer 5",
     speakerColor: "from-orange-900/60 to-orange-950/80 border-orange-500",
     timeStart: "02:18",
@@ -251,9 +257,9 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     layers: [6, 5],
     slides: "Folie 7: Layer 6 & 5",
     topic: "Formatierung, TLS-Verschlüsselung, Kompression, Sitzungsverwaltung",
-    scriptText: "Danke, Patrick.\n\nBevor Daten wirklich ins Netz gehen, müssen sie erst einmal aufbereitet werden.\n\nDas macht Schicht 6: die Darstellungsschicht, also der Presentation Layer.\n\nHier werden Daten formatiert.\n\nZum Beispiel werden Bilder in JPEG kodiert, Texte in ASCII oder Unicode dargestellt, und Dateien werden in ein einheitliches Format gebracht, damit verschiedene Systeme sie verstehen können.\n\nSehr wichtig in dieser Schicht ist außerdem die Verschlüsselung.\n\nWenn ihr sicher im Internet surft, kommt hier zum Beispiel TLS ins Spiel.\n\nTLS sorgt dafür, dass Daten verschlüsselt übertragen werden und nicht ohne Weiteres mitgelesen werden können.\n\nZusätzlich kann in Schicht 6 auch Datenkompression stattfinden.\n\nDas bedeutet: Große Datenmengen werden kleiner gemacht, damit sie effizienter übertragen werden können.\n\nDanach folgt Schicht 5: die Sitzungsschicht, der Session Layer.\n\nStellt euch diese Schicht wie einen Moderator vor.\n\nSie baut die Kommunikationssitzung zwischen zwei Systemen auf.\n\nSie hält die Verbindung aktiv.\n\nUnd sie beendet die Sitzung am Ende auch wieder sauber.\n\nWenn zum Beispiel eine Verbindung kurz abreißt, kann Schicht 5 dabei helfen, die Kommunikation wieder aufzunehmen, ohne den gesamten Vorgang neu starten zu müssen.\n\nKurz gesagt: Schicht 6 bereitet die Daten auf, und Schicht 5 verwaltet den Gesprächsverlauf zwischen den Systemen.\n\nWie die Daten nun transportiert werden, zeigt euch Issa.",
-    transitionCue: "Wie die Daten nun transportiert werden, zeigt euch Issa.",
-    directorNotes: "Bastian spricht ruhig und sachlich. Bei „TLS“ kurz Schloss-Icon einblenden. Bei „Sitzung“ einfache Grafik zweier verbundener Systeme. Übergabe an Issa klar betonen.",
+    scriptText: "Danke für die Einführung.\n\nBevor Daten wirklich ins Netz gehen, müssen sie erst einmal aufbereitet werden.\n\nDas macht Schicht 6: die Darstellungsschicht, also der Presentation Layer.\n\nHier werden Daten formatiert.\n\nZum Beispiel werden Bilder in JPEG kodiert, Texte in ASCII oder Unicode dargestellt, und Dateien werden in ein einheitliches Format gebracht, damit verschiedene Systeme sie verstehen können.\n\nSehr wichtig in dieser Schicht ist außerdem die Verschlüsselung.\n\nWenn ihr sicher im Internet surft, kommt hier zum Beispiel TLS ins Spiel.\n\nTLS sorgt dafür, dass Daten verschlüsselt übertragen werden und nicht ohne Weiteres mitgelesen werden können.\n\nZusätzlich kann in Schicht 6 auch Datenkompression stattfinden.\n\nDas bedeutet: Große Datenmengen werden kleiner gemacht, damit sie effizienter übertragen werden können.\n\nDanach folgt Schicht 5: die Sitzungsschicht, der Session Layer.\n\nStellt euch diese Schicht wie einen Moderator vor.\n\nSie baut die Kommunikationssitzung zwischen zwei Systemen auf.\n\nSie hält die Verbindung aktiv.\n\nUnd sie beendet die Sitzung am Ende auch wieder sauber.\n\nWenn zum Beispiel eine Verbindung kurz abreißt, kann Schicht 5 dabei helfen, die Kommunikation wieder aufzunehmen, ohne den gesamten Vorgang neu starten zu müssen.\n\nKurz gesagt: Schicht 6 bereitet die Daten auf, und Schicht 5 verwaltet den Gesprächsverlauf zwischen den Systemen.\n\nWie die Daten nun transportiert werden, zeigt euch der nächste Schritt: Schicht 4 und 3.",
+    transitionCue: "Wie die Daten nun transportiert werden, zeigt euch der nächste Schritt: Schicht 4 und 3.",
+    directorNotes: "Sprecher 2 spricht ruhig und sachlich. Bei „TLS“ kurz Schloss-Icon einblenden. Bei „Sitzung“ einfache Grafik zweier verbundener Systeme. Übergabe klar betonen.",
     cues: [
       { timeOffset: "02:25", label: "Layer 6 hervorgehoben" },
       { timeOffset: "02:40", label: "Beispiele: JPEG, ASCII, Unicode" },
@@ -264,13 +270,13 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
       { timeOffset: "04:00", label: "Text: „Sitzung aufbauen – halten – beenden“" },
       { timeOffset: "04:12", label: "Pfeil nach unten zu Layer 4" }
     ],
-    aiVideoPrompt: "German IT presenter Bastian explains Layer 6 Presentation Layer and Layer 5 Session Layer. Show data formatting, JPEG, ASCII, TLS encryption lock icon, data compression graphic, and session handshake establishment between two computers. Clean slide animation, lower third 'Bastian - Layer 6 & Layer 5', professional educational video, 720p 16:9."
+    aiVideoPrompt: "German IT presenter explains Layer 6 Presentation Layer and Layer 5 Session Layer. Show data formatting, JPEG, ASCII, TLS encryption lock icon, data compression graphic, and session handshake establishment between two computers. Clean slide animation, lower third 'Sprecher 2 - Layer 6 & Layer 5', professional educational video, 720p 16:9."
   },
   {
     id: "scene-3",
     sceneNumber: 3,
-    title: "Szene 3: Issa – Transportschicht & Vermittlungsschicht",
-    speaker: "Issa",
+    title: "Szene 3: Sprecher 3 – Transportschicht & Vermittlungsschicht",
+    speaker: "Sprecher 3",
     speakerRole: "Layer 4 & Layer 3",
     speakerColor: "from-emerald-900/60 to-emerald-950/80 border-emerald-500",
     timeStart: "04:18",
@@ -281,8 +287,8 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     layers: [4, 3],
     slides: "Folie 6 & 5",
     topic: "Segmente, TCP vs. UDP, Ports, IP-Pakete, Router & Routing",
-    scriptText: "Genau.\n\nJetzt müssen die Daten reisefertig gemacht werden.\n\nDas passiert in Schicht 4: der Transportschicht, also dem Transport Layer.\n\nHier werden die Daten in Segmente zerlegt.\n\nMan kann sich das so vorstellen: Eine große Nachricht wird in mehrere kleinere Teile aufgeteilt, damit sie besser übertragen und später wieder zusammengesetzt werden kann.\n\nIn dieser Schicht haben wir vor allem zwei wichtige Protokolle: TCP und UDP.\n\nTCP steht für eine sichere Übertragung.\n\nDabei gibt es Empfangsbestätigungen. Wenn ein Segment verloren geht, wird es erneut übertragen.\n\nDas ist zum Beispiel wichtig bei Downloads, E-Mails oder Webseiten, bei denen Daten vollständig ankommen müssen.\n\nUDP dagegen ist schneller, aber unzuverlässiger.\n\nHier werden Verluste nicht unbedingt korrigiert.\n\nDas ist sinnvoll bei Videostreams, Online-Spielen oder Voice-over-IP, wo Geschwindigkeit wichtiger ist als perfekte Vollständigkeit.\n\nAußerdem werden in Schicht 4 die Ports vergeben.\n\nPorts sagen dem Zielsystem, an welche Anwendung oder welchen Dienst die Daten übergeben werden sollen.\n\nDann geht es weiter in Schicht 3: die Vermittlungsschicht, also den Network Layer.\n\nHier kommen die IP-Adressen ins Spiel.\n\nAus den Segmenten werden Pakete.\n\nJedes Paket enthält eine Quell-IP-Adresse und eine Ziel-IP-Adresse.\n\nDer Router schaut sich die Ziel-IP an und sucht den besten Weg durch das Netzwerk.\n\nDiesen Vorgang nennt man Routing.\n\nVereinfacht gesagt: Schicht 4 regelt den Transport, und Schicht 3 regelt den Weg.\n\nThomas erklärt euch jetzt, wie das im lokalen Netz aussieht.",
-    transitionCue: "Thomas erklärt euch jetzt, wie das im lokalen Netz aussieht.",
+    scriptText: "Genau.\n\nJetzt müssen die Daten reisefertig gemacht werden.\n\nDas passiert in Schicht 4: der Transportschicht, also dem Transport Layer.\n\nHier werden die Daten in Segmente zerlegt.\n\nMan kann sich das so vorstellen: Eine große Nachricht wird in mehrere kleinere Teile aufgeteilt, damit sie besser übertragen und später wieder zusammengesetzt werden kann.\n\nIn dieser Schicht haben wir vor allem zwei wichtige Protokolle: TCP und UDP.\n\nTCP steht für eine sichere Übertragung.\n\nDabei gibt es Empfangsbestätigungen. Wenn ein Segment verloren geht, wird es erneut übertragen.\n\nDas ist zum Beispiel wichtig bei Downloads, E-Mails oder Webseiten, bei denen Daten vollständig ankommen müssen.\n\nUDP dagegen ist schneller, aber unzuverlässiger.\n\nHier werden Verluste nicht unbedingt korrigiert.\n\nDas ist sinnvoll bei Videostreams, Online-Spielen oder Voice-over-IP, wo Geschwindigkeit wichtiger ist als perfekte Vollständigkeit.\n\nAußerdem werden in Schicht 4 die Ports vergeben.\n\nPorts sagen dem Zielsystem, an welche Anwendung oder welchen Dienst die Daten übergeben werden sollen.\n\nDann geht es weiter in Schicht 3: die Vermittlungsschicht, also den Network Layer.\n\nHier kommen die IP-Adressen ins Spiel.\n\nAus den Segmenten werden Pakete.\n\nJedes Paket enthält eine Quell-IP-Adresse und eine Ziel-IP-Adresse.\n\nDer Router schaut sich die Ziel-IP an und sucht den besten Weg durch das Netzwerk.\n\nDiesen Vorgang nennt man Routing.\n\nVereinfacht gesagt: Schicht 4 regelt den Transport, und Schicht 3 regelt den Weg.\n\nWeiter geht es nun mit Schicht 2 und Schicht 1 im lokalen Netz.",
+    transitionCue: "Weiter geht es nun mit Schicht 2 und Schicht 1 im lokalen Netz.",
     directorNotes: "TCP/UDP-Vergleich gern zweispaltig visualisieren (Zuverlässig vs. Schnell). Ports kurz anreißen (80, 443, 53). Routing-Pfad als animierte Linie von Router zu Router.",
     cues: [
       { timeOffset: "04:25", label: "Layer 4 hervorgehoben" },
@@ -292,15 +298,15 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
       { timeOffset: "05:30", label: "Layer 3 hervorgehoben" },
       { timeOffset: "05:45", label: "IP-Paket mit Quell- und Zieladresse" },
       { timeOffset: "06:00", label: "Router sucht Pfad im Netzwerk (Routing)" },
-      { timeOffset: "06:12", label: "Übergabe an Thomas" }
+      { timeOffset: "06:12", label: "Übergabe an Schicht 2 und 1" }
     ],
-    aiVideoPrompt: "German IT presenter Issa explains Layer 4 Transport Layer and Layer 3 Network Layer. Show data segmentation into segments, TCP reliable transfer with handshake vs UDP fast stream, ports 80/443, IP packets with source and destination IP, and a glowing router network path. Modern network diagram, lower third 'Issa - Layer 4 & Layer 3', 720p 16:9."
+    aiVideoPrompt: "German IT presenter explains Layer 4 Transport Layer and Layer 3 Network Layer. Show data segmentation into segments, TCP reliable transfer with handshake vs UDP fast stream, ports 80/443, IP packets with source and destination IP, and a glowing router network path. Modern network diagram, lower third 'Sprecher 3 - Layer 4 & Layer 3', 720p 16:9."
   },
   {
     id: "scene-4",
     sceneNumber: 4,
-    title: "Szene 4: Thomas – Sicherungsschicht & Bitübertragungsschicht",
-    speaker: "Thomas",
+    title: "Szene 4: Sprecher 4 – Sicherungsschicht & Bitübertragungsschicht",
+    speaker: "Sprecher 4",
     speakerRole: "Layer 2 & Layer 1",
     speakerColor: "from-blue-900/60 to-blue-950/80 border-blue-500",
     timeStart: "06:18",
@@ -311,9 +317,9 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     layers: [2, 1],
     slides: "Folie 4: Layer 2 & 1",
     topic: "Switches, MAC-Adressen, Ethernet-Frames, Bits 0/1, Kupfer, Glasfaser, WLAN",
-    scriptText: "Danke, Issa.\n\nWenn das IP-Paket bei uns im Hausnetz ankommt, übernimmt Schicht 2: die Sicherungsschicht, also der Data Link Layer.\n\nHier arbeiten Switches.\n\nDie Pakete werden in Frames verpackt.\n\nEin Frame enthält unter anderem die MAC-Adressen.\n\nDie MAC-Adresse ist eine eindeutige Adresse der Netzwerkkarte.\n\nÜber diese MAC-Adresse weiß der Switch, an welchen konkreten Rechner oder welches Gerät im lokalen Netz das Datenpaket weitergeleitet werden muss.\n\nMan kann sagen: Schicht 3 kümmert sich um den logischen Weg über IP-Adressen, und Schicht 2 kümmert sich um die lokale Zustellung über MAC-Adressen.\n\nGanz unten sind wir dann bei Schicht 1 angekommen: der Bitübertragungsschicht, dem Physical Layer.\n\nHier gibt es keine Pakete oder Frames mehr.\n\nHier gibt es nur noch Nullen und Einsen.\n\nDas sind rohe Signale.\n\nDiese Signale können elektrische Spannungen über Kupferkabel sein, Lichtimpulse über Glasfaserkabel oder Funkwellen im WLAN.\n\nSchicht 1 ist also die Grundlage von allem: Ohne physikalische Übertragung gibt es kein Netzwerk.\n\nKurz zusammengefasst: Layer 2 sorgt für die lokale Übertragung zwischen Geräten, und Layer 1 überträgt die Bits tatsächlich über das Medium.\n\nAdem fasst das nun für uns in der Praxis zusammen.",
-    transitionCue: "Adem fasst das nun für uns in der Praxis zusammen.",
-    directorNotes: "Thomas sollte nicht hetzen. MAC-Adresse klar von IP abgrenzen: Hardwarenah, lokal, Switch. Echte Fotos/Icons von Kupferkabeln, Glasfaser und WLAN zeigen.",
+    scriptText: "Wenn das IP-Paket bei uns im Hausnetz ankommt, übernimmt Schicht 2: die Sicherungsschicht, also der Data Link Layer.\n\nHier arbeiten Switches.\n\nDie Pakete werden in Frames verpackt.\n\nEin Frame enthält unter anderem die MAC-Adressen.\n\nDie MAC-Adresse ist eine eindeutige Adresse der Netzwerkkarte.\n\nÜber diese MAC-Adresse weiß der Switch, an welchen konkreten Rechner oder welches Gerät im lokalen Netz das Datenpaket weitergeleitet werden muss.\n\nMan kann sagen: Schicht 3 kümmert sich um den logischen Weg über IP-Adressen, und Schicht 2 kümmert sich um die lokale Zustellung über MAC-Adressen.\n\nGanz unten sind wir dann bei Schicht 1 angekommen: der Bitübertragungsschicht, dem Physical Layer.\n\nHier gibt es keine Pakete oder Frames mehr.\n\nHier gibt es nur noch Nullen und Einsen.\n\nDas sind rohe Signale.\n\nDiese Signale können elektrische Spannungen über Kupferkabel sein, Lichtimpulse über Glasfaserkabel oder Funkwellen im WLAN.\n\nSchicht 1 ist also die Grundlage von allem: Ohne physikalische Übertragung gibt es kein Netzwerk.\n\nKurz zusammengefasst: Layer 2 sorgt für die lokale Übertragung zwischen Geräten, und Layer 1 überträgt die Bits tatsächlich über das Medium.\n\nAls Nächstes folgt der Vergleich mit TCP/IP und die Kapselung in der Praxis.",
+    transitionCue: "Als Nächstes folgt der Vergleich mit TCP/IP und die Kapselung in der Praxis.",
+    directorNotes: "Sprecher 4 sollte nicht hetzen. MAC-Adresse klar von IP abgrenzen: Hardwarenah, lokal, Switch. Echte Fotos/Icons von Kupferkabeln, Glasfaser und WLAN zeigen.",
     cues: [
       { timeOffset: "06:25", label: "Layer 2 hervorgehoben" },
       { timeOffset: "06:40", label: "Switch im Server-Rack" },
@@ -322,15 +328,15 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
       { timeOffset: "07:30", label: "Kupferkabel, Glasfaser, WLAN einblenden" },
       { timeOffset: "07:50", label: "Animation: 0 und 1 als Signalimpulse" },
       { timeOffset: "08:05", label: "Text: „Ohne Layer 1 kein Netzwerk“" },
-      { timeOffset: "08:12", label: "Übergabe an Bastian / Adem" }
+      { timeOffset: "08:12", label: "Übergabe an Exkurs und Praxis" }
     ],
-    aiVideoPrompt: "German IT presenter Thomas explains Layer 2 Data Link Layer and Layer 1 Physical Layer. Show rack switch, MAC addresses, Ethernet frames, copper Cat6 cables, fiber optic glowing light pulses, Wi-Fi radio waves, and binary bits 0 and 1 stream. Professional technical visualization, lower third 'Thomas - Layer 2 & Layer 1', 720p 16:9."
+    aiVideoPrompt: "German IT presenter explains Layer 2 Data Link Layer and Layer 1 Physical Layer. Show rack switch, MAC addresses, Ethernet frames, copper Cat6 cables, fiber optic glowing light pulses, Wi-Fi radio waves, and binary bits 0 and 1 stream. Professional technical visualization, lower third 'Sprecher 4 - Layer 2 & Layer 1', 720p 16:9."
   },
   {
     id: "scene-5",
     sceneNumber: 5,
-    title: "Szene 5: Bastian – Exkurs TCP/IP vs. OSI",
-    speaker: "Bastian",
+    title: "Szene 5: Sprecher 2 – Exkurs TCP/IP vs. OSI",
+    speaker: "Sprecher 2",
     speakerRole: "TCP/IP-Exkurs",
     speakerColor: "from-amber-900/60 to-amber-950/80 border-amber-500",
     timeStart: "08:18",
@@ -341,8 +347,8 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     layers: [7, 6, 5, 4, 3, 2, 1],
     slides: "Folie 9: OSI vs. TCP/IP",
     topic: "Theorie vs. Praxis: 7 Schichten OSI vs. 4 Schichten TCP/IP",
-    scriptText: "Bevor wir zum Fazit kommen, noch ein kurzer Vergleich.\n\nIn der echten Welt nutzen wir meistens das TCP/IP-Modell.\n\nEs ist schlanker und hat nur vier Schichten statt sieben.\n\nDie oberen drei OSI-Schichten – also Anwendungsschicht, Darstellungsschicht und Sitzungsschicht – werden bei TCP/IP einfach als Anwendungsschicht zusammengefasst.\n\nDarunter folgen Transportschicht, Internetschicht und Netzzugangsschicht.\n\nWichtig für uns ist:\n\nOSI ist unser theoretisches Referenzmodell.\n\nTCP/IP ist das Modell, das praktisch im Internet läuft.\n\nBeide Modelle helfen uns aber dabei, Netzwerkprobleme einzuordnen und zu verstehen.\n\nAdem übernimmt jetzt das Praxisbeispiel und das Fazit.",
-    transitionCue: "Adem übernimmt jetzt das Praxisbeispiel und das Fazit.",
+    scriptText: "Bevor wir zum Fazit kommen, noch ein kurzer Vergleich.\n\nIn der echten Welt nutzen wir meistens das TCP/IP-Modell.\n\nEs ist schlanker und hat nur vier Schichten statt sieben.\n\nDie oberen drei OSI-Schichten – also Anwendungsschicht, Darstellungsschicht und Sitzungsschicht – werden bei TCP/IP einfach als Anwendungsschicht zusammengefasst.\n\nDarunter folgen Transportschicht, Internetschicht und Netzzugangsschicht.\n\nWichtig für uns ist:\n\nOSI ist unser theoretisches Referenzmodell.\n\nTCP/IP ist das Modell, das praktisch im Internet läuft.\n\nBeide Modelle helfen uns aber dabei, Netzwerkprobleme einzuordnen und zu verstehen.\n\nEs folgt nun das praxisnahe Kapselungsbeispiel und das Fazit.",
+    transitionCue: "Es folgt nun das praxisnahe Kapselungsbeispiel und das Fazit.",
     directorNotes: "Kompakt, ruhig und präzise. Visueller 1-zu-1 Vergleich zwischen den 7 OSI-Schichten und 4 TCP/IP-Schichten ist essenziell.",
     cues: [
       { timeOffset: "08:20", label: "Folie „OSI vs. TCP/IP“" },
@@ -350,15 +356,15 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
       { timeOffset: "08:40", label: "TCP/IP 4 Schichten rechts aufgebaut" },
       { timeOffset: "08:50", label: "Verbindungslinien: Layer 7/6/5 → Application" },
       { timeOffset: "09:00", label: "Text: „OSI = Referenzmodell, TCP/IP = Praxis“" },
-      { timeOffset: "09:15", label: "Schnitt zu Adem" }
+      { timeOffset: "09:15", label: "Schnitt zu Praxisbeispiel" }
     ],
     aiVideoPrompt: "Short comparison infographic slide: OSI 7 layers on the left side versus TCP/IP 4 layers on the right side. Animated connector lines showing OSI layers 7, 6, 5 merging into TCP/IP Application layer. Highlighting 'OSI = Referenzmodell, TCP/IP = Praxis im Internet'. Clean modern tech infographic, 720p 16:9, educational style."
   },
   {
     id: "scene-6",
     sceneNumber: 6,
-    title: "Szene 6: Adem – Praxisbeispiel, Kapselung & Fazit",
-    speaker: "Adem",
+    title: "Szene 6: Sprecher 5 – Praxisbeispiel, Kapselung & Fazit",
+    speaker: "Sprecher 5",
     speakerRole: "Praxis & Fazit",
     speakerColor: "from-cyan-900/60 to-cyan-950/80 border-cyan-500",
     timeStart: "09:18",
@@ -384,9 +390,9 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
       { timeOffset: "11:10", label: "Animation: Entkapselung (unten → oben)" },
       { timeOffset: "11:20", label: "Troubleshooting-Liste Layer 1–7 einblenden" },
       { timeOffset: "11:35", label: "Text: „Strukturierte Fehlersuche statt Raten“" },
-      { timeOffset: "11:45", label: "Danksagung durch Adem" }
+      { timeOffset: "11:45", label: "Abschluss und Danksagung" }
     ],
-    aiVideoPrompt: "German IT presenter Adem explains network encapsulation in practice. 3D animated diagram of an HTTP payload getting wrapped in TCP header, then IP header, then Ethernet MAC header, and converted into binary pulses. Then show systematic troubleshooting checklist going from Layer 1 to Layer 7. Calm, confident, lower third 'Adem - Praxis & Fazit', professional 720p 16:9."
+    aiVideoPrompt: "German IT presenter explains network encapsulation in practice. 3D animated diagram of an HTTP payload getting wrapped in TCP header, then IP header, then Ethernet MAC header, and converted into binary pulses. Then show systematic troubleshooting checklist going from Layer 1 to Layer 7. Calm, confident, lower third 'Sprecher 5 - Praxis & Fazit', professional 720p 16:9."
   },
   {
     id: "scene-7",
@@ -402,16 +408,16 @@ export const PRESENTATION_SCENES: PresentationScene[] = [
     durationSeconds: 12,
     layers: [],
     slides: "Folie 12: Endcard / Fazit",
-    topic: "Danksagung, Teammitglieder (Patrick, Bastian, Issa, Thomas, Adem), Fade-Out",
-    scriptText: "[Kein Sprechtext – Sanfte Outro-Musik]\n\nEinblendung Endcard:\nVielen Dank für eure Aufmerksamkeit!\nOSI-Modell – 7 Schichten\nFISI Umschulung – Comcave\nTeam: Patrick, Bastian, Issa, Thomas, Adem",
+    topic: "Danksagung, Fachinformatik Systemintegration, Fade-Out",
+    scriptText: "[Kein Sprechtext – Sanfte Outro-Musik]\n\nEinblendung Endcard:\nVielen Dank für eure Aufmerksamkeit!\nOSI-Modell – 7 Schichten\nFISI Umschulung – Comcave\nIHK-Abschlussprojekt Systemintegration",
     directorNotes: "Kein weiterer Sprecher. 12 Sekunden Endcard. Musik blendet leise auf. Fade-out über die letzten 2 Sekunden ins Schwarze.",
     cues: [
       { timeOffset: "11:48", label: "Endcard blendet ein" },
-      { timeOffset: "11:52", label: "Teamnamen erscheinen" },
+      { timeOffset: "11:52", label: "Abschlussübersicht erscheint" },
       { timeOffset: "11:58", label: "Fade-out ins Schwarze (1-2s)" },
       { timeOffset: "12:00", label: "Ende des Videos (Punktlandung 12:00 Min)" }
     ],
-    aiVideoPrompt: "Clean, elegant outro endcard for a German IT training presentation. Dark blue and dark slate background with miniature glowing 7-layer OSI model symbol in corner. Golden white text: 'Vielen Dank für Ihre Aufmerksamkeit! - FISI Umschulung Comcave' and listing 'Patrick, Bastian, Issa, Thomas, Adem'. Gentle fade out, 720p 16:9, broadcast standard."
+    aiVideoPrompt: "Clean, elegant outro endcard for a German IT training presentation. Dark blue and dark slate background with miniature glowing 7-layer OSI model symbol in corner. Golden white text: 'Vielen Dank für Ihre Aufmerksamkeit! - FISI Umschulung Comcave' and 'Fachinformatiker Systemintegration'. Gentle fade out, 720p 16:9, broadcast standard."
   }
 ];
 
@@ -472,7 +478,7 @@ export const PRESENTATION_SLIDES = [
     bullets: [
       "Referenzmodell für herstellerübergreifende Netzwerkkommunikation",
       "Vorbereitung für das IHK-Fachgespräch Fachinformatiker Systemintegration",
-      "Team: Patrick, Bastian, Issa, Thomas, Adem"
+      "IHK-Prüfungsvorbereitung • Systemintegration (FISI)"
     ]
   },
   {
@@ -644,8 +650,9 @@ export function generateFfmpegCommand(options: {
   audioBitrate?: string;
 }): string {
   const input = options.inputFile || "input.mp4";
-  const output = options.outputFile || "OSI_Modell_Comcave_720p_12min.mp4";
-  const scale = options.resolution === "1080p" ? "1920:1080" : "1280:720";
+  const res = options.resolution || "720p";
+  const scale = res === "1080p" ? "1920:1080" : res === "360p" ? "640:360" : "1280:720";
+  const output = options.outputFile || (res === "360p" ? "OSI_Modell_Comcave_360p_12min.mp4" : "OSI_Modell_Comcave_720p_12min.mp4");
   const crf = options.crf ?? 20;
   const audioBitrate = options.audioBitrate || "192k";
 
@@ -699,7 +706,7 @@ export function validatePresentationSchedule(scenes: PresentationScene[]): {
 export const CARTESIA_VOICE_PRESETS: CartesiaVoiceConfig[] = [
   {
     id: "a0e99841-438c-4a64-b679-ae501e7d6091",
-    name: "Sonic German – Patrick (Professioneller Sprecher)",
+    name: "Sonic German – Professioneller Moderator (Klar & Präzise)",
     gender: "male",
     language: "de",
     recommendedRole: "Einleitung & Layer 7",
@@ -707,7 +714,7 @@ export const CARTESIA_VOICE_PRESETS: CartesiaVoiceConfig[] = [
   },
   {
     id: "79a125e8-cd45-4c13-8a67-188112f4dd22",
-    name: "Sonic German – Bastian (Ruhig & Strukturiert)",
+    name: "Sonic German – Strukturierter Erklärer (Ruhig & Didaktisch)",
     gender: "male",
     language: "de",
     recommendedRole: "Layer 6 & Layer 5 / TCP-IP",
@@ -715,7 +722,7 @@ export const CARTESIA_VOICE_PRESETS: CartesiaVoiceConfig[] = [
   },
   {
     id: "846d3cb9-059d-4511-80c1-584742a8b98b",
-    name: "Sonic German – Issa (Dynamisch & Präzise)",
+    name: "Sonic German – Dynamischer Techniker (Zügig & Exakt)",
     gender: "male",
     language: "de",
     recommendedRole: "Layer 4 & Layer 3",
@@ -723,7 +730,7 @@ export const CARTESIA_VOICE_PRESETS: CartesiaVoiceConfig[] = [
   },
   {
     id: "5c42302d-19c9-4673-90d2-8b438343ab88",
-    name: "Sonic German – Thomas (Hardware & Technik)",
+    name: "Sonic German – Hardware & Infrastruktur (Sachlich & Tief)",
     gender: "male",
     language: "de",
     recommendedRole: "Layer 2 & Layer 1",
@@ -731,7 +738,7 @@ export const CARTESIA_VOICE_PRESETS: CartesiaVoiceConfig[] = [
   },
   {
     id: "694f9389-aac1-45b6-b726-9d9369183238",
-    name: "Sonic German – Adem (Experte & Troubleshooting)",
+    name: "Sonic German – Troubleshooting & Analyse (Souverän & Autoritär)",
     gender: "male",
     language: "de",
     recommendedRole: "Praxis, Kapselung & Fazit",
@@ -739,7 +746,7 @@ export const CARTESIA_VOICE_PRESETS: CartesiaVoiceConfig[] = [
   },
   {
     id: "156fb8d2-335b-4950-9cb3-a2d33fad7777",
-    name: "Sonic German – Erzähler (Allrounder)",
+    name: "Sonic German – Universeller Erzähler (Allrounder)",
     gender: "male",
     language: "de",
     recommendedRole: "Allgemein",

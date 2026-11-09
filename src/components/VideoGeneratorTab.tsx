@@ -320,11 +320,11 @@ export const VideoGeneratorTab: React.FC<VideoGeneratorTabProps> = ({
                   onChange={(e) => setResolution(e.target.value as any)}
                   className="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-white focus:outline-none focus:border-blue-500"
                 >
+                  <option value="360p">360p (640&times;360) &bull; Sparsam-Modus</option>
                   <option value="720p">720p (1280&times;720) &bull; Standard</option>
                   <option value="1080p">1080p (Full HD)</option>
-                  <option value="360p">360p (Schnellvorschau)</option>
                 </select>
-                <span className="text-[10px] text-amber-400 mt-1 block">Empfohlen für IHK: 720p</span>
+                <span className="text-[10px] text-amber-400 mt-1 block">Sparsam: 360p schont Rechenleistung & Tokens</span>
               </div>
 
               {/* Duration Selector */}

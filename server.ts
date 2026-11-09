@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
 
@@ -23,8 +24,19 @@ app.get('/api/health', (req: Request, res: Response) => {
     model: 'gemini-omni-1.1-flash',
     supportedAspectRatios: ['16:9', '9:16'],
     defaultResolution: '720p',
+    hasWindowsInstaller: fs.existsSync(path.resolve(__dirname, 'public/downloads/OSI-720p-Studio-Setup.exe')),
     timestamp: new Date().toISOString()
   });
+});
+
+// Download Windows Executable Installer
+app.get('/api/download-installer', (req: Request, res: Response) => {
+  const filePath = path.resolve(__dirname, 'public/downloads/OSI-720p-Studio-Setup.exe');
+  if (fs.existsSync(filePath)) {
+    res.download(filePath, 'OSI-720p-Studio-Setup.exe');
+  } else {
+    res.status(404).json({ error: 'Windows Installer EXE nicht gefunden.' });
+  }
 });
 
 // Video Generation Endpoint using gemini-interactions-api with gemini-omni-1.1-flash
@@ -320,8 +332,8 @@ Erstelle ein JSON-Array mit 6 bis 8 chronologischen Szenen (von 00:00 bis zum En
 Jede Szene MUSS exakt folgende Felder enthalten:
 - "sceneNumber": Zahl (0, 1, 2, ...)
 - "title": Name der Szene (z.B. "Szene 1: Begrüßung & Layer 7")
-- "speaker": Sprechername (z.B. "Patrick", "Bastian", "Issa", "Thomas", "Adem" oder vom Video abgeleitet)
-- "speakerRole": Rolle (z.B. "Einleitung & Layer 7")
+- "speaker": Sprecherbezeichnung (z.B. "Sprecher 1", "Sprecher 2", "Moderator", "Technischer Experte" oder vom Video abgeleitet)
+- "speakerRole": Rolle (z.B. "Einleitung & Layer 7", "Transport & Routing")
 - "timeStart": Startzeit als "MM:SS" (z.B. "00:00")
 - "timeEnd": Endzeit als "MM:SS" (z.B. "02:18")
 - "durationSeconds": Dauer in Sekunden
@@ -333,7 +345,7 @@ Jede Szene MUSS exakt folgende Felder enthalten:
 - "cues": Array von Objekten mit "timeOffset" (MM:SS) und "label" (Bildschirmeinblendung)
 - "directorNotes": Regieanweisung zu Kamera, Blickrichtung und Gestik
 - "aiVideoPrompt": Detaillierter Prompt für das KI-Videomodell gemini-omni-1.1-flash im 16:9 Querformat
-- "cartesiaVoiceId": Cartesia Sonic Voice ID (z.B. "a0e99841-438c-4a64-b679-ae501e7d6091" für Patrick, "79a125e8-cd45-4c13-8a67-188112f4dd22" für Bastian, "846d3cb9-059d-4511-80c1-584742a8b98b" für Issa, "5c42302d-19c9-4673-90d2-8b438343ab88" für Thomas, "694f9389-aac1-45b6-b726-9d9369183238" für Adem)
+- "cartesiaVoiceId": Cartesia Sonic Voice ID (z.B. "a0e99841-438c-4a64-b679-ae501e7d6091" für Moderator, "79a125e8-cd45-4c13-8a67-188112f4dd22" für Erklärer, "846d3cb9-059d-4511-80c1-584742a8b98b" für Techniker, "5c42302d-19c9-4673-90d2-8b438343ab88" für Hardware, "694f9389-aac1-45b6-b726-9d9369183238" für Troubleshooting)
 - "cartesiaEmotion": Stimmung für Cartesia TTS (z.B. "calm, professional, articulate")
 
 Antworte NUR mit reinem JSON (Array von Objekten), ohne Markdown-Ummantelung.`;
@@ -361,169 +373,295 @@ Antworte NUR mit reinem JSON (Array von Objekten), ohne Markdown-Ummantelung.`;
 
     // If Gemini was not reachable or transcript was empty, generate high-fidelity structured breakdown
     if (decomposedScenes.length === 0) {
-      console.log('[YouTube Analyzer] Using default structured decomposition preset');
-      decomposedScenes = [
-        {
-          sceneNumber: 0,
-          title: `Intro: ${videoMetadata.title}`,
-          speaker: 'Intro',
-          speakerRole: 'Titelfolie & Eröffnung',
-          timeStart: '00:00',
-          timeEnd: '00:20',
-          durationSeconds: 20,
-          layers: [],
-          slides: 'Folie 1: Titelfolie',
-          topic: `Eröffnungsvideo zu: ${videoMetadata.title}`,
-          scriptText: `[Intro Musik & Animation]\n\nWillkommen zur Präsentation: ${videoMetadata.title}.\nErstellt für die FISI Umschulung bei Comcave.\nSprecher-Team: Patrick, Bastian, Issa, Thomas und Adem.`,
-          transitionCue: 'Direkter Schnitt auf Patrick',
-          cues: [
-            { timeOffset: '00:00', label: 'Schwarzer Fade-in 1s' },
-            { timeOffset: '00:05', label: `Titelfolie: ${videoMetadata.title}` },
-            { timeOffset: '00:15', label: 'Team-Layout einblenden' }
-          ],
-          directorNotes: 'Ruhige Technik-Musik. Titelfolie zentral. Nach 20 Sekunden harter Schnitt auf Sprecher 1.',
-          aiVideoPrompt: `Professional German IT video title scene in 720p 16:9. Modern dark slate and deep blue studio with floating 3D network nodes. Text: '${videoMetadata.title}'. 30fps broadcast quality.`,
-          cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
-          cartesiaEmotion: 'calm, corporate'
-        },
-        {
-          sceneNumber: 1,
-          title: 'Patrick – Grundlagen & Schicht 7 (Application Layer)',
-          speaker: 'Patrick',
-          speakerRole: 'Einleitung & Layer 7',
-          timeStart: '00:20',
-          timeEnd: '02:20',
-          durationSeconds: 120,
-          layers: [7],
-          slides: 'Folie 1–3 und Folie 8',
-          topic: 'Historie ISO 1984, Schicht 7 HTTP/HTTPS/SMTP',
-          scriptText: 'Guten Morgen zusammen. Wir präsentieren euch heute das Schichtenmodell der Netzwerkkommunikation. Entwickelt 1984 von der ISO, ermöglicht das Modell herstellerunabhängige Kommunikation. Ich starte direkt ganz oben, beim Benutzer, mit Schicht 7: der Anwendungsschicht, dem Application Layer. Hier befinden sich Protokolle wie HTTP, HTTPS und SMTP. Schicht 7 ist unser Tor zum Netzwerk. Das erklärt euch nun Bastian.',
-          transitionCue: 'Das erklärt euch nun Bastian.',
-          cues: [
-            { timeOffset: '00:30', label: 'OSI-Modell ISO 1984' },
-            { timeOffset: '01:00', label: 'Layer 7 orange hervorgehoben' },
-            { timeOffset: '01:30', label: 'HTTP / HTTPS / SMTP Icons' }
-          ],
-          directorNotes: 'Patrick steht frontal zur Kamera. Klare Aussprache. Bei Begriffen Folien einblenden.',
-          aiVideoPrompt: 'German IT presenter Patrick introduces network architecture in 720p 16:9. Slide shows 7 layers diagram, highlighting Layer 7 Application Layer with browser and email icons. Lower third Patrick.',
-          cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
-          cartesiaEmotion: 'confident, professional, clear'
-        },
-        {
-          sceneNumber: 2,
-          title: 'Bastian – Darstellung (Layer 6) & Sitzung (Layer 5)',
-          speaker: 'Bastian',
-          speakerRole: 'Layer 6 & Layer 5',
-          timeStart: '02:20',
-          timeEnd: '04:20',
-          durationSeconds: 120,
-          layers: [6, 5],
-          slides: 'Folie 7: Layer 6 & 5',
-          topic: 'Formatierung, TLS-Verschlüsselung, Kompression, Sitzungsverwaltung',
-          scriptText: 'Danke, Patrick. Bevor Daten wirklich ins Netz gehen, müssen sie aufbereitet werden. Das macht Schicht 6, der Presentation Layer. Hier werden Daten formatiert, z.B. in JPEG oder ASCII, und verschlüsselt mittels TLS. Danach folgt Schicht 5: der Session Layer als Moderator der Verbindung. Wie die Daten nun transportiert werden, zeigt euch Issa.',
-          transitionCue: 'Wie die Daten nun transportiert werden, zeigt euch Issa.',
-          cues: [
-            { timeOffset: '02:30', label: 'Layer 6 hervorgehoben' },
-            { timeOffset: '03:00', label: 'TLS Schloss-Icon' },
-            { timeOffset: '03:30', label: 'Layer 5 Sitzungsaufbau' }
-          ],
-          directorNotes: 'Bastian spricht ruhig und analytisch. Schloss-Icon bei TLS einblenden.',
-          aiVideoPrompt: 'German presenter Bastian explaining Layer 6 Presentation and Layer 5 Session Layer. Showing TLS encryption lock, data compression graphics, and session handshake. 720p 16:9 educational style.',
-          cartesiaVoiceId: '79a125e8-cd45-4c13-8a67-188112f4dd22',
-          cartesiaEmotion: 'calm, measured, articulate'
-        },
-        {
-          sceneNumber: 3,
-          title: 'Issa – Transport (Layer 4) & Vermittlung (Layer 3)',
-          speaker: 'Issa',
-          speakerRole: 'Layer 4 & Layer 3',
-          timeStart: '04:20',
-          timeEnd: '06:20',
-          durationSeconds: 120,
-          layers: [4, 3],
-          slides: 'Folie 6 & 5',
-          topic: 'Segmente, TCP vs. UDP, Ports, IP-Pakete, Routing',
-          scriptText: 'Genau. Schicht 4, die Transportschicht, zerlegt Daten in Segmente und vergibt Ports. TCP steht für verlässliche Übertragung, UDP für maximale Geschwindigkeit. In Schicht 3 kommen IP-Adressen ins Spiel und Router finden den besten Weg durch das Netz. Thomas erklärt euch jetzt, wie das im lokalen Netz aussieht.',
-          transitionCue: 'Thomas erklärt euch jetzt, wie das im lokalen Netz aussieht.',
-          cues: [
-            { timeOffset: '04:30', label: 'Layer 4 Segmentierung' },
-            { timeOffset: '05:00', label: 'TCP vs. UDP Vergleich' },
-            { timeOffset: '05:30', label: 'Layer 3 IP-Pakete & Router' }
-          ],
-          directorNotes: 'Issa dynamisch und fokussiert. Vergleichstabelle TCP vs UDP zweispaltig.',
-          aiVideoPrompt: 'German IT presenter Issa explains Layer 4 Transport Layer and Layer 3 Network Layer. Showing TCP vs UDP packet segments, port numbers 80 and 443, and glowing router path. 720p 16:9.',
-          cartesiaVoiceId: '846d3cb9-059d-4511-80c1-584742a8b98b',
-          cartesiaEmotion: 'energetic, technical, sharp'
-        },
-        {
-          sceneNumber: 4,
-          title: 'Thomas – Sicherung (Layer 2) & Bitübertragung (Layer 1)',
-          speaker: 'Thomas',
-          speakerRole: 'Layer 2 & Layer 1',
-          timeStart: '06:20',
-          timeEnd: '08:20',
-          durationSeconds: 120,
-          layers: [2, 1],
-          slides: 'Folie 4: Layer 2 & 1',
-          topic: 'Switches, MAC-Adressen, Ethernet-Frames, Bits 0/1, Kabel, Funk',
-          scriptText: 'Danke, Issa. Schicht 2 verpackt Pakete in Frames mit MAC-Adressen, damit Switches im lokalen Netz die Daten zustellen. Schicht 1, der Physical Layer, überträgt schließlich rohe Nullen und Einsen als elektrische Spannung, Licht oder Funk. Ohne Schicht 1 gibt es kein Netzwerk. Adem fasst das nun für uns in der Praxis zusammen.',
-          transitionCue: 'Adem fasst das nun für uns in der Praxis zusammen.',
-          cues: [
-            { timeOffset: '06:30', label: 'Switch im Serverrack' },
-            { timeOffset: '07:00', label: 'Frame mit MAC-Adresse' },
-            { timeOffset: '07:30', label: 'Kupferkabel & Glasfaser' }
-          ],
-          directorNotes: 'Thomas spricht sachlich und praxisnah. Physische Hardware zeigen.',
-          aiVideoPrompt: 'German presenter Thomas explaining Layer 2 Data Link Layer and Layer 1 Physical Layer. Showing network switch rack, MAC addresses, RJ45 Ethernet cable, fiber optic pulses and binary bits. 720p 16:9.',
-          cartesiaVoiceId: '5c42302d-19c9-4673-90d2-8b438343ab88',
-          cartesiaEmotion: 'deep, grounded, technical'
-        },
-        {
-          sceneNumber: 5,
-          title: 'Adem – Kapselung, Troubleshooting & Fazit',
-          speaker: 'Adem',
-          speakerRole: 'Praxis & Fazit',
-          timeStart: '08:20',
-          timeEnd: '11:45',
-          durationSeconds: 205,
-          layers: [7, 6, 5, 4, 3, 2, 1],
-          slides: 'Folie 10–12',
-          topic: 'Kapselungsprinzip Webseitenaufruf, IHK-Troubleshooting Layer 1–7, Prüfungsfazit',
-          scriptText: 'Fassen wir zusammen, wie das Prinzip der Kapselung bei einem Webseitenaufruf aussieht: HTTP auf Schicht 7, TCP-Header auf Schicht 4, IP-Header auf Schicht 3, MAC-Header auf Schicht 2 und Bits auf Schicht 1. Beim Troubleshooting gehen wir strukturiert von Schicht 1 aufwärts vor. Wer das OSI-Modell kennt, stochert nicht im Dunkeln. Vielen Dank für eure Aufmerksamkeit.',
-          transitionCue: 'Vielen Dank für eure Aufmerksamkeit.',
-          cues: [
-            { timeOffset: '08:30', label: 'Kapselungsanimation oben nach unten' },
-            { timeOffset: '09:30', label: 'Entkapselung unten nach oben' },
-            { timeOffset: '10:30', label: 'Troubleshooting Checkliste L1–L7' }
-          ],
-          directorNotes: 'Adem bildet den souveränen Abschluss für das IHK-Fachgespräch.',
-          aiVideoPrompt: 'German IT expert Adem explaining packet encapsulation and structured troubleshooting checklist from Layer 1 to 7. 3D animated data packet receiving headers. 720p 16:9.',
-          cartesiaVoiceId: '694f9389-aac1-45b6-b726-9d9369183238',
-          cartesiaEmotion: 'confident, authoritative, engaging'
-        },
-        {
-          sceneNumber: 6,
-          title: 'Outro: Endcard & Danksagung',
-          speaker: 'Outro',
-          speakerRole: 'Abschluss',
-          timeStart: '11:45',
-          timeEnd: '12:00',
-          durationSeconds: 15,
-          layers: [],
-          slides: 'Folie 12: Endcard',
-          topic: 'Danksagung, Team-Nennung, Ausblendung',
-          scriptText: '[Outro Musik & Fade-Out]\n\nVielen Dank für Ihre Aufmerksamkeit!\nFISI Umschulung – Comcave\nTeam: Patrick, Bastian, Issa, Thomas, Adem',
-          transitionCue: 'Ende des Videos',
-          cues: [
-            { timeOffset: '11:45', label: 'Endcard einblenden' },
-            { timeOffset: '11:58', label: 'Fade-out 2s' }
-          ],
-          directorNotes: '15 Sekunden Endcard. Sanftes Ausblenden ins Schwarze.',
-          aiVideoPrompt: 'Elegant dark blue outro endcard for German IT training presentation in 720p 16:9. Text: Vielen Dank für Ihre Aufmerksamkeit! Team Patrick, Bastian, Issa, Thomas, Adem. Broadcast quality.',
-          cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
-          cartesiaEmotion: 'calm'
-        }
-      ];
+      if (videoId === 'OSI7Short45s' || url?.includes('OSI7Short45s')) {
+        videoMetadata.title = 'Kurzvideo 1: OSI 7-Schichten Express (360p Sparsam - 45s)';
+        videoMetadata.durationSeconds = 45;
+        decomposedScenes = [
+          {
+            sceneNumber: 0,
+            title: 'Sprecher 1 – Layer 7 bis 5 im Schnellflug',
+            speaker: 'Sprecher 1',
+            speakerRole: 'Software & Session (360p)',
+            timeStart: '00:00',
+            timeEnd: '00:15',
+            durationSeconds: 15,
+            layers: [7, 6, 5],
+            slides: 'Folie 1–3',
+            topic: 'Application, Presentation & Session Layer',
+            scriptText: 'Willkommen zum OSI Express! Schicht 7 bringt Anwendungen wie HTTP. Schicht 6 verschlüsselt mit TLS und Schicht 5 steuert die Sitzung. Weiter zu Schicht 4 und 3.',
+            transitionCue: 'Weiter zu Schicht 4 und 3.',
+            cues: [{ timeOffset: '00:00', label: '360p Sparsam-Modus' }, { timeOffset: '00:07', label: 'L7-L5 Icons' }],
+            directorNotes: 'Dynamischer Zusammenschnitt, sparsame 360p/720p Auflösung.',
+            aiVideoPrompt: 'Fast-paced German IT presenter explaining OSI upper layers, clean 360p low-bitrate technical style.',
+            cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
+            cartesiaEmotion: 'energetic, concise'
+          },
+          {
+            sceneNumber: 1,
+            title: 'Sprecher 2 – Layer 4 & 3 Transport & Routing',
+            speaker: 'Sprecher 2',
+            speakerRole: 'Transport & IP (360p)',
+            timeStart: '00:15',
+            timeEnd: '00:30',
+            durationSeconds: 15,
+            layers: [4, 3],
+            slides: 'Folie 4–5',
+            topic: 'TCP Segmente, UDP & IP-Routing',
+            scriptText: 'Schicht 4 zerlegt Daten in Segmente mit TCP und UDP Ports. Schicht 3 adressiert logisch mit IP-Adressen für Router. Es folgt die Hardware-Ebene.',
+            transitionCue: 'Es folgt die Hardware-Ebene.',
+            cues: [{ timeOffset: '00:15', label: 'TCP/IP Flow' }, { timeOffset: '00:22', label: 'Router & IP Paket' }],
+            directorNotes: 'Fokus auf Routing-Pfeile.',
+            aiVideoPrompt: 'Technical presenter pointing to fast animated TCP packets and routing switch in 360p/720p.',
+            cartesiaVoiceId: '846d3cb9-059d-4511-80c1-584742a8b98b',
+            cartesiaEmotion: 'direct, technical'
+          },
+          {
+            sceneNumber: 2,
+            title: 'Sprecher 3 – Layer 2 & 1 Frames, MAC & Bits',
+            speaker: 'Sprecher 3',
+            speakerRole: 'Hardware & Physik (360p)',
+            timeStart: '00:30',
+            timeEnd: '00:45',
+            durationSeconds: 15,
+            layers: [2, 1],
+            slides: 'Folie 6–7',
+            topic: 'Ethernet-Frames, MAC-Adressen, Bits 0 & 1',
+            scriptText: 'Schicht 2 packt Frames mit MAC-Adressen für Switches. Schicht 1 schickt rohe Bits über Kupfer oder Funk. Das war das OSI-Modell in 45 Sekunden!',
+            transitionCue: 'Ende des Express-Durchlaufs.',
+            cues: [{ timeOffset: '00:30', label: 'Ethernet-Frame' }, { timeOffset: '00:38', label: '0101 Bitstream' }],
+            directorNotes: 'RJ45 Kabel und 0/1 Bitstream Animation.',
+            aiVideoPrompt: 'Close up of ethernet switch LEDs and 0 and 1 digital bit signals, 360p video clip.',
+            cartesiaVoiceId: '5c42302d-19c9-4673-90d2-8b438343ab88',
+            cartesiaEmotion: 'solid, concise'
+          }
+        ];
+      } else if (videoId === 'TCPIPIHKShort' || url?.includes('TCPIPIHKShort')) {
+        videoMetadata.title = 'Kurzvideo 2: TCP/IP vs OSI Troubleshooting Speedrun (360p Sparsam - 40s)';
+        videoMetadata.durationSeconds = 40;
+        decomposedScenes = [
+          {
+            sceneNumber: 0,
+            title: 'Sprecher 1 – L1 & L2 Hardware & Link Check',
+            speaker: 'Sprecher 1',
+            speakerRole: 'Physik & Link Check (360p)',
+            timeStart: '00:00',
+            timeEnd: '00:15',
+            durationSeconds: 15,
+            layers: [1, 2],
+            slides: 'Troubleshooting L1-L2',
+            topic: 'Kabelbruch, Link-LED & Switch MAC-Tabelle',
+            scriptText: 'Troubleshooting startet Bottom-Up! Schicht 1: Leuchtet die Link-LED am Patchkabel? Schicht 2: Sieht der Switch die MAC-Adresse in der CAM-Table? Wenn ja, weiter zu Schicht 3.',
+            transitionCue: 'Wenn ja, weiter zu Schicht 3.',
+            cues: [{ timeOffset: '00:00', label: 'Troubleshooting Start' }, { timeOffset: '00:07', label: 'Link LED grün' }],
+            directorNotes: 'Prüfender Blick auf Switch-Panel.',
+            aiVideoPrompt: 'IT specialist troubleshooting physical layer cables and RJ45 link LED in 360p.',
+            cartesiaVoiceId: '5c42302d-19c9-4673-90d2-8b438343ab88',
+            cartesiaEmotion: 'analytical, confident'
+          },
+          {
+            sceneNumber: 1,
+            title: 'Sprecher 2 – L3 & L4 IP-Routing & Port-Scan',
+            speaker: 'Sprecher 2',
+            speakerRole: 'IP & Port Diagnose (360p)',
+            timeStart: '00:15',
+            timeEnd: '00:30',
+            durationSeconds: 15,
+            layers: [3, 4],
+            slides: 'Troubleshooting L3-L4',
+            topic: 'Ping Standard-Gateway, Traceroute, Port 443 SYN/ACK',
+            scriptText: 'Schicht 3: Wir pingen das Standard-Gateway. Antwortet der Router? Schicht 4: Ist Port 443 offen? SYN-ACK empfangen? Wenn ja, liegt der Fehler nicht im Transportnetz!',
+            transitionCue: 'Weiter zur Anwendungsschicht.',
+            cues: [{ timeOffset: '00:15', label: 'Ping 192.168.1.1 OK' }, { timeOffset: '00:23', label: 'TCP SYN-ACK Port 443' }],
+            directorNotes: 'Terminal mit Ping und Traceroute Einblendung.',
+            aiVideoPrompt: 'Terminal command line ping and traceroute execution, network specialist testing ports in 360p.',
+            cartesiaVoiceId: '846d3cb9-059d-4511-80c1-584742a8b98b',
+            cartesiaEmotion: 'precise, energetic'
+          },
+          {
+            sceneNumber: 2,
+            title: 'Sprecher 3 – L7 HTTP Payload & IHK-Fazit',
+            speaker: 'Sprecher 3',
+            speakerRole: 'Applikation & Fazit (360p)',
+            timeStart: '00:30',
+            timeEnd: '00:40',
+            durationSeconds: 10,
+            layers: [7],
+            slides: 'Troubleshooting L7 Fazit',
+            topic: 'HTTP 200 OK vs 404 / 500, IHK Bottom-Up Prinzip',
+            scriptText: 'Schicht 7: Antwortet der Webserver mit HTTP 200 oder Fehler 500? Mit dem Bottom-Up Prinzip findet man jeden Fehler strukturiert in unter einer Minute!',
+            transitionCue: 'Erfolgreich gelöst!',
+            cues: [{ timeOffset: '00:30', label: 'HTTP 200 OK' }, { timeOffset: '00:37', label: 'Problem gelöst Check' }],
+            directorNotes: 'Sprecher schließt mit Daumen nach oben.',
+            aiVideoPrompt: 'IT consultant standing beside network diagnostic dashboard showing green status 200 OK in 360p.',
+            cartesiaVoiceId: '694f9389-aac1-45b6-b726-9d9369183238',
+            cartesiaEmotion: 'authoritative, punchy'
+          }
+        ];
+      } else {
+        console.log('[YouTube Analyzer] Using default structured decomposition preset');
+        decomposedScenes = [
+          {
+            sceneNumber: 0,
+            title: `Intro: ${videoMetadata.title}`,
+            speaker: 'Intro',
+            speakerRole: 'Titelfolie & Eröffnung',
+            timeStart: '00:00',
+            timeEnd: '00:20',
+            durationSeconds: 20,
+            layers: [],
+            slides: 'Folie 1: Titelfolie',
+            topic: `Eröffnungsvideo zu: ${videoMetadata.title}`,
+            scriptText: `[Intro Musik & Animation]\n\nWillkommen zur Präsentation: ${videoMetadata.title}.\nErstellt für die FISI Umschulung bei Comcave.\nIHK-Prüfungsvorbereitung Systemintegration.`,
+            transitionCue: 'Direkter Schnitt auf Sprecher 1',
+            cues: [
+              { timeOffset: '00:00', label: 'Schwarzer Fade-in 1s' },
+              { timeOffset: '00:05', label: `Titelfolie: ${videoMetadata.title}` },
+              { timeOffset: '00:15', label: 'Themen-Layout einblenden' }
+            ],
+            directorNotes: 'Ruhige Technik-Musik. Titelfolie zentral. Nach 20 Sekunden harter Schnitt auf Sprecher 1.',
+            aiVideoPrompt: `Professional German IT video title scene in 720p 16:9. Modern dark slate and deep blue studio with floating 3D network nodes. Text: '${videoMetadata.title}'. 30fps broadcast quality.`,
+            cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
+            cartesiaEmotion: 'calm, corporate'
+          },
+          {
+            sceneNumber: 1,
+            title: 'Sprecher 1 – Grundlagen & Schicht 7 (Application Layer)',
+            speaker: 'Sprecher 1',
+            speakerRole: 'Einleitung & Layer 7',
+            timeStart: '00:20',
+            timeEnd: '02:20',
+            durationSeconds: 120,
+            layers: [7],
+            slides: 'Folie 1–3 und Folie 8',
+            topic: 'Historie ISO 1984, Schicht 7 HTTP/HTTPS/SMTP',
+            scriptText: 'Guten Morgen zusammen. Wir präsentieren euch heute das Schichtenmodell der Netzwerkkommunikation. Entwickelt 1984 von der ISO, ermöglicht das Modell herstellerunabhängige Kommunikation. Ich starte direkt ganz oben, beim Benutzer, mit Schicht 7: der Anwendungsschicht, dem Application Layer. Hier befinden sich Protokolle wie HTTP, HTTPS und SMTP. Schicht 7 ist unser Tor zum Netzwerk. Das erklärt euch nun der nächste Themenbereich.',
+            transitionCue: 'Das erklärt euch nun der nächste Themenbereich.',
+            cues: [
+              { timeOffset: '00:30', label: 'OSI-Modell ISO 1984' },
+              { timeOffset: '01:00', label: 'Layer 7 orange hervorgehoben' },
+              { timeOffset: '01:30', label: 'HTTP / HTTPS / SMTP Icons' }
+            ],
+            directorNotes: 'Sprecher 1 steht frontal zur Kamera. Klare Aussprache. Bei Begriffen Folien einblenden.',
+            aiVideoPrompt: 'German IT presenter introduces network architecture in 720p 16:9. Slide shows 7 layers diagram, highlighting Layer 7 Application Layer with browser and email icons. Lower third Sprecher 1.',
+            cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
+            cartesiaEmotion: 'confident, professional, clear'
+          },
+          {
+            sceneNumber: 2,
+            title: 'Sprecher 2 – Darstellung (Layer 6) & Sitzung (Layer 5)',
+            speaker: 'Sprecher 2',
+            speakerRole: 'Layer 6 & Layer 5',
+            timeStart: '02:20',
+            timeEnd: '04:20',
+            durationSeconds: 120,
+            layers: [6, 5],
+            slides: 'Folie 7: Layer 6 & 5',
+            topic: 'Formatierung, TLS-Verschlüsselung, Kompression, Sitzungsverwaltung',
+            scriptText: 'Danke für die Einführung. Bevor Daten wirklich ins Netz gehen, müssen sie aufbereitet werden. Das macht Schicht 6, der Presentation Layer. Hier werden Daten formatiert, z.B. in JPEG oder ASCII, und verschlüsselt mittels TLS. Danach folgt Schicht 5: der Session Layer als Moderator der Verbindung. Wie die Daten nun transportiert werden, zeigt euch Schicht 4 und 3.',
+            transitionCue: 'Wie die Daten nun transportiert werden, zeigt euch Schicht 4 und 3.',
+            cues: [
+              { timeOffset: '02:30', label: 'Layer 6 hervorgehoben' },
+              { timeOffset: '03:00', label: 'TLS Schloss-Icon' },
+              { timeOffset: '03:30', label: 'Layer 5 Sitzungsaufbau' }
+            ],
+            directorNotes: 'Sprecher 2 spricht ruhig und analytisch. Schloss-Icon bei TLS einblenden.',
+            aiVideoPrompt: 'German presenter explaining Layer 6 Presentation and Layer 5 Session Layer. Showing TLS encryption lock, data compression graphics, and session handshake. 720p 16:9 educational style.',
+            cartesiaVoiceId: '79a125e8-cd45-4c13-8a67-188112f4dd22',
+            cartesiaEmotion: 'calm, measured, articulate'
+          },
+          {
+            sceneNumber: 3,
+            title: 'Sprecher 3 – Transport (Layer 4) & Vermittlung (Layer 3)',
+            speaker: 'Sprecher 3',
+            speakerRole: 'Layer 4 & Layer 3',
+            timeStart: '04:20',
+            timeEnd: '06:20',
+            durationSeconds: 120,
+            layers: [4, 3],
+            slides: 'Folie 6 & 5',
+            topic: 'Segmente, TCP vs. UDP, Ports, IP-Pakete, Routing',
+            scriptText: 'Genau. Schicht 4, die Transportschicht, zerlegt Daten in Segmente und vergibt Ports. TCP steht für verlässliche Übertragung, UDP für maximale Geschwindigkeit. In Schicht 3 kommen IP-Adressen ins Spiel und Router finden den besten Weg durch das Netz. Weiter geht es mit Schicht 2 und 1.',
+            transitionCue: 'Weiter geht es mit Schicht 2 und 1.',
+            cues: [
+              { timeOffset: '04:30', label: 'Layer 4 Segmentierung' },
+              { timeOffset: '05:00', label: 'TCP vs. UDP Vergleich' },
+              { timeOffset: '05:30', label: 'Layer 3 IP-Pakete & Router' }
+            ],
+            directorNotes: 'Sprecher 3 dynamisch und fokussiert. Vergleichstabelle TCP vs UDP zweispaltig.',
+            aiVideoPrompt: 'German IT presenter explains Layer 4 Transport Layer and Layer 3 Network Layer. Showing TCP vs UDP packet segments, port numbers 80 and 443, and glowing router path. 720p 16:9.',
+            cartesiaVoiceId: '846d3cb9-059d-4511-80c1-584742a8b98b',
+            cartesiaEmotion: 'energetic, technical, sharp'
+          },
+          {
+            sceneNumber: 4,
+            title: 'Sprecher 4 – Sicherung (Layer 2) & Bitübertragung (Layer 1)',
+            speaker: 'Sprecher 4',
+            speakerRole: 'Layer 2 & Layer 1',
+            timeStart: '06:20',
+            timeEnd: '08:20',
+            durationSeconds: 120,
+            layers: [2, 1],
+            slides: 'Folie 4: Layer 2 & 1',
+            topic: 'Switches, MAC-Adressen, Ethernet-Frames, Bits 0/1, Kabel, Funk',
+            scriptText: 'Danke. Schicht 2 verpackt Pakete in Frames mit MAC-Adressen, damit Switches im lokalen Netz die Daten zustellen. Schicht 1, der Physical Layer, überträgt schließlich rohe Nullen und Einsen als elektrische Spannung, Licht oder Funk. Ohne Schicht 1 gibt es kein Netzwerk. Es folgt das Praxisbeispiel und das Fazit.',
+            transitionCue: 'Es folgt das Praxisbeispiel und das Fazit.',
+            cues: [
+              { timeOffset: '06:30', label: 'Switch im Serverrack' },
+              { timeOffset: '07:00', label: 'Frame mit MAC-Adresse' },
+              { timeOffset: '07:30', label: 'Kupferkabel & Glasfaser' }
+            ],
+            directorNotes: 'Sprecher 4 spricht sachlich und praxisnah. Physische Hardware zeigen.',
+            aiVideoPrompt: 'German presenter explaining Layer 2 Data Link Layer and Layer 1 Physical Layer. Showing network switch rack, MAC addresses, RJ45 Ethernet cable, fiber optic pulses and binary bits. 720p 16:9.',
+            cartesiaVoiceId: '5c42302d-19c9-4673-90d2-8b438343ab88',
+            cartesiaEmotion: 'deep, grounded, technical'
+          },
+          {
+            sceneNumber: 5,
+            title: 'Sprecher 5 – Kapselung, Troubleshooting & Fazit',
+            speaker: 'Sprecher 5',
+            speakerRole: 'Praxis & Fazit',
+            timeStart: '08:20',
+            timeEnd: '11:45',
+            durationSeconds: 205,
+            layers: [7, 6, 5, 4, 3, 2, 1],
+            slides: 'Folie 10–12',
+            topic: 'Kapselungsprinzip Webseitenaufruf, IHK-Troubleshooting Layer 1–7, Prüfungsfazit',
+            scriptText: 'Fassen wir zusammen, wie das Prinzip der Kapselung bei einem Webseitenaufruf aussieht: HTTP auf Schicht 7, TCP-Header auf Schicht 4, IP-Header auf Schicht 3, MAC-Header auf Schicht 2 und Bits auf Schicht 1. Beim Troubleshooting gehen wir strukturiert von Schicht 1 aufwärts vor. Wer das OSI-Modell kennt, stochert nicht im Dunkeln. Vielen Dank für eure Aufmerksamkeit.',
+            transitionCue: 'Vielen Dank für eure Aufmerksamkeit.',
+            cues: [
+              { timeOffset: '08:30', label: 'Kapselungsanimation oben nach unten' },
+              { timeOffset: '09:30', label: 'Entkapselung unten nach oben' },
+              { timeOffset: '10:30', label: 'Troubleshooting Checkliste L1–L7' }
+            ],
+            directorNotes: 'Sprecher 5 bildet den souveränen Abschluss für das IHK-Fachgespräch.',
+            aiVideoPrompt: 'German IT expert explaining packet encapsulation and structured troubleshooting checklist from Layer 1 to 7. 3D animated data packet receiving headers. 720p 16:9.',
+            cartesiaVoiceId: '694f9389-aac1-45b6-b726-9d9369183238',
+            cartesiaEmotion: 'confident, authoritative, engaging'
+          },
+          {
+            sceneNumber: 6,
+            title: 'Outro: Endcard & Danksagung',
+            speaker: 'Outro',
+            speakerRole: 'Abschluss',
+            timeStart: '11:45',
+            timeEnd: '12:00',
+            durationSeconds: 15,
+            layers: [],
+            slides: 'Folie 12: Endcard',
+            topic: 'Danksagung, IHK-Abschluss, Ausblendung',
+            scriptText: '[Outro Musik & Fade-Out]\n\nVielen Dank für Ihre Aufmerksamkeit!\nFISI Umschulung – Comcave\nIHK-Abschlussprojekt Systemintegration',
+            transitionCue: 'Ende des Videos',
+            cues: [
+              { timeOffset: '11:45', label: 'Endcard einblenden' },
+              { timeOffset: '11:58', label: 'Fade-out 2s' }
+            ],
+            directorNotes: '15 Sekunden Endcard. Sanftes Ausblenden ins Schwarze.',
+            aiVideoPrompt: 'Elegant dark blue outro endcard for German IT training presentation in 720p 16:9. Text: Vielen Dank für Ihre Aufmerksamkeit! FISI Umschulung Comcave. Broadcast quality.',
+            cartesiaVoiceId: 'a0e99841-438c-4a64-b679-ae501e7d6091',
+            cartesiaEmotion: 'calm'
+          }
+        ];
+      }
     }
 
     return res.json({

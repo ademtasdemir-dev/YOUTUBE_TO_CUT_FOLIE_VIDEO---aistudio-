@@ -24,21 +24,25 @@ export const YouTubeDecomposerTab: React.FC<YouTubeDecomposerTabProps> = ({
   const [appliedNotice, setAppliedNotice] = useState<boolean>(false);
 
   // Preset YouTube links for quick testing
+  // Preset YouTube links for quick testing (featuring 2 low-resolution 360p short videos for efficiency)
   const samplePresets = [
     {
-      title: 'OSI-Modell 12-Min Vortrag (FISI Comcave)',
+      title: 'Kurzvideo 1: OSI 7-Schichten Express (360p Sparsam - 45s)',
+      url: 'https://www.youtube.com/watch?v=OSI7Short45s',
+      description: '360p Niedrige Auflösung: 45s Schnellüberblick aller 7 Schichten von L7 bis L1.',
+      tag: '360p Sparsam'
+    },
+    {
+      title: 'Kurzvideo 2: TCP/IP vs OSI Troubleshooting Speedrun (360p Sparsam - 40s)',
+      url: 'https://www.youtube.com/watch?v=TCPIPIHKShort',
+      description: '360p Niedrige Auflösung: 40s Bottom-Up Fehlersuche von L1 Kabel bis L7 Webserver.',
+      tag: '360p Sparsam'
+    },
+    {
+      title: 'OSI-Modell 12-Min Referenzvortrag (FISI Comcave - 720p)',
       url: 'https://www.youtube.com/watch?v=0kFp6B0YVb0',
-      description: 'Standard 12:00 Minuten IHK-Vortrag mit Patrick, Bastian, Issa, Thomas, Adem'
-    },
-    {
-      title: 'Netzwerktechnik & Kapselung IHK Prüfung',
-      url: 'https://www.youtube.com/watch?v=IPv6Netzwerk89',
-      description: 'Ausführliche Erklärung von HTTP-Payload bis Bits und Troubleshooting'
-    },
-    {
-      title: 'TCP/IP vs. OSI Schichtenmodell Deep Dive',
-      url: 'https://www.youtube.com/watch?v=TCPvsOSI123',
-      description: 'Gegenüberstellung 7 OSI Schichten vs. 4 TCP/IP Schichten'
+      description: 'Standard 12:00 Minuten IHK-Vortrag über alle 7 Schichten, Kapselung und Troubleshooting.',
+      tag: '720p Standard'
     }
   ];
 
@@ -212,7 +216,17 @@ export const YouTubeDecomposerTab: React.FC<YouTubeDecomposerTabProps> = ({
                     : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700 hover:text-slate-200'
                 }`}
               >
-                <div className="font-semibold text-slate-200 truncate">{preset.title}</div>
+                <div className="flex items-center justify-between gap-1 mb-0.5">
+                  <div className="font-semibold text-slate-200 truncate">{preset.title.split(':')[0]}</div>
+                  {preset.tag && (
+                    <span className={`px-1.5 py-0.2 rounded text-[9px] font-mono font-bold shrink-0 ${
+                      preset.tag.includes('360p') ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-slate-800 text-slate-400'
+                    }`}>
+                      {preset.tag}
+                    </span>
+                  )}
+                </div>
+                <div className="text-[11px] text-slate-300 font-medium truncate">{preset.title.split(':')[1] || preset.title}</div>
                 <div className="text-[10px] text-slate-500 truncate mt-0.5">{preset.description}</div>
               </button>
             ))}

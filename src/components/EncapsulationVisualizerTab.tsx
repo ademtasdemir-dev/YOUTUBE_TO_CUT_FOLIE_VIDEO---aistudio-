@@ -46,7 +46,7 @@ export const EncapsulationVisualizerTab: React.FC = () => {
               Praxisbeispiel: Kapselung & Entkapselung
             </h2>
             <span className="px-2 py-0.5 rounded text-[11px] font-semibold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
-              Adems Hauptteil (09:18–11:48)
+              Praxis-Demonstration (09:18–11:48)
             </span>
           </div>
           <p className="text-xs text-slate-400 max-w-3xl">
@@ -215,7 +215,7 @@ export const EncapsulationVisualizerTab: React.FC = () => {
           <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 space-y-2">
             <div className="text-xs font-semibold text-amber-400 uppercase tracking-wider flex items-center gap-1.5">
               <Info className="w-4 h-4" />
-              Erklärung aus Adems Vortrag:
+              Erklärung aus dem Fachvortrag:
             </div>
             <p className="text-sm text-slate-200 leading-relaxed italic">
               „{currentStep.explanation}“
