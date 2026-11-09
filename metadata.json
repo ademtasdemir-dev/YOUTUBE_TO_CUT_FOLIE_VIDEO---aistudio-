@@ -1,0 +1,6 @@
+{
+  "name": "OSI-Modell 720p Studio & Gemini Omni Video Generator",
+  "description": "Professionelles Produktionsstudio für die 12-minütige 720p OSI-Modell Präsentation (FISI Umschulung Comcave) mit KI-Videogenerierung via Gemini Omni 1.1 Flash (Interactions API), Teleprompter, Kapselungs-Visualisierung und IHK-Troubleshooting-Matrix.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,899 @@
+Ich kann hier **keine fertige 720p-Videodatei rendern/exportieren**, weil ich als Text-KI kein Video-Encoding durchführe.  
+Ich kann dir aber anhand deines Drehbuchs ein **vollständiges Video-Produktionskonzept / Regiebuch / Schnittplan** erstellen, mit dem du das Video in **maximaler Länge von 12:00 Minuten** in **720p** produzieren kannst – z. B. in CapCut, Premiere Pro, DaVinci Resolve, OBS, PowerPoint-Aufnahme oder einem KI-Video-Tool.
+
+---
+
+# Video-Konzept: OSI-Modell Präsentation  
+**Projekt:** OSI-Modell – FISI Umschulung bei Comcave  
+**Zweck:** Übung für IHK-Fachgespräch  
+**Auflösung:** 720p  
+**Seitenverhältnis:** 16:9  
+**Maximale Länge:** 12:00 Minuten  
+**Stil:** sachlich, professionell, prüfungsorientiert, ruhig, klar strukturiert  
+**Wichtig:** Kein Dazwischenreden. Jeder spricht nur seinen festen Part. Übergänge sind klar definiert.
+
+---
+
+## Technische Vorgabe für 720p-Export
+
+| Einstellung | Wert |
+|---|---|
+| Auflösung | 1280 × 720 px |
+| Seitenverhältnis | 16:9 |
+| Framerate | 30 fps |
+| Codec | H.264 / AVC |
+| Container | MP4 |
+| Audio | AAC, 48 kHz, Stereo |
+| Ziel-Lautstärke | ca. -16 LUFS |
+| Bitrate Video | 5–8 Mbit/s |
+| Dateiname empfohlen | `OSI_Modell_Comcave_720p_12min.mp4` |
+
+---
+
+# Gesamtzeitplan – maximal 12:00 Minuten
+
+| Zeit | Person | Inhalt |
+|---|---|---|
+| 00:00–00:18 | Intro | Titelfolie, Team, Thema |
+| 00:18–02:18 | Patrick | Begrüßung + Layer 7 |
+| 02:18–04:18 | Bastian | Layer 6 + Layer 5 |
+| 04:18–06:18 | Issa | Layer 4 + Layer 3 |
+| 06:18–08:18 | Thomas | Layer 2 + Layer 1 |
+| 08:18–09:18 | Bastian | Kurzer TCP/IP-Vergleich |
+| 09:18–11:48 | Adem | Praxisbeispiel, Kapselung, Troubleshooting, Fazit |
+| 11:48–12:00 | Outro | Dankesfolie, Endcard |
+
+---
+
+# Visueller Grundstil
+
+## Farbwelt
+- Hintergrund: dunkelblau / anthrazit
+- Akzentfarbe: Orange oder Hellblau
+- Text: Weiß
+- OSI-Schichten: jeweils farblich hervorgehoben
+
+## Schrift
+- Titel: fett, z. B. Inter Bold / Roboto Bold / Arial Bold
+- Fließtext: regular, gut lesbar
+- Mindestschriftgröße für 720p: ca. 28–32 px
+
+## Wiederkehrende Elemente
+- Unten links: Name + Rolle als Lower Third  
+  Beispiel:  
+  **Patrick**  
+  *Einleitung & Layer 7*
+
+- Oben rechts kleines OSI-7-Schichten-Diagramm als Fortschrittsanzeige  
+  Die aktuell besprochene Schicht wird hervorgehoben.
+
+- Übergänge:
+  - Harte Schnitte zwischen Sprechern
+  - Kein dramatischer Effekt
+  -Optional: 0,5 Sekunden Black oder Slide-Cut
+  - Bei Folienwechsel: sanfter Zoom oder Blend über 0,3–0,5 s
+
+---
+
+# Szenenplan mit Regie, Text und Schnitt
+
+---
+
+## Szene 0 – Intro  
+**Zeit:** 00:00–00:18  
+**Sprecher:** keiner / optional leise Musik  
+**Folie:** Titelfolie
+
+### Bild
+- Schwarzer Fade-in über 1 Sekunde
+- Titelfolie erscheint zentral
+- Ruhige Technik-Musik sehr leise im Hintergrund
+- Nach 10 Sekunden blendet das Team-Layout ein
+
+### Einblendungen
+**OSI-Modell**  
+**Schichtenmodell der Netzwerkkommunikation**  
+
+Darunter:
+**FISI Umschulung – Comcave**  
+**Präsentation: Patrick, Bastian, Issa, Thomas, Adem**
+
+### Regie
+- Kein Sprechen.
+- Nur Musik oder Stille.
+- Die Folie soll ruhig und professionell wirken.
+- Nach 18 Sekunden direkter Schnitt zu Patrick.
+
+---
+
+## Szene 1 – Patrick: Begrüßung & Anwendungsschicht  
+**Zeit:** 00:18–02:18  
+**Sprecher:** Patrick  
+**Folien:** Folie 1–3 und Folie 8  
+**Thema:** Einführung + Layer 7
+
+### Bildaufbau
+- Patrick steht vor der Klasse / vor neutraler Wand / im Seminarraum.
+- Kamera: feste Totale oder halbe Totale.
+- Patrick spricht direkt in die Kamera.
+- Bei erwähnten Begriffen werden Folien oder Grafiken eingeblendet.
+
+### Lower Third
+**Patrick**  
+*Einleitung & Layer 7*
+
+### Sprechtext – leicht erweitert für 2 Minuten
+
+> Guten Morgen zusammen.  
+>   
+> Wir präsentieren euch heute das OSI-Modell.  
+>   
+> Das OSI-Modell wurde 1984 von der ISO entwickelt.  
+>   
+> Der Zweck war ganz klar: Computersysteme unterschiedlicher Hersteller sollten weltweit miteinander kommunizieren können – unabhängig davon, welche Hardware oder welches Betriebssystem eingesetzt wird.  
+>   
+> Das Modell besteht aus sieben Schichten.  
+>   
+> Diese sieben Schichten helfen uns dabei, Netzwerkcommunication sauber zu strukturieren.  
+>   
+> Ich starte direkt ganz oben, beim Benutzer, mit Schicht 7: der Anwendungsschicht, dem Application Layer.  
+>   
+> Hier befinden sich die Protokolle, die unsere Programme nutzen.  
+>   
+> Wenn ihr zum Beispiel eine Website öffnet, nutzt der Browser HTTP oder HTTPS.  
+>   
+> Bei E-Mails kommt SMTP zum Einsatz.  
+>   
+> Schicht 7 ist also unser Tor zum Netzwerk.  
+>   
+> Sie ist die Schicht, mit der Anwendungen wie Browser, E-Mail-Programme oder Dateiübertragungsprogramme direkt arbeiten.  
+>   
+> Wichtig ist dabei: Die Anwendung selbst muss nicht wissen, wie die Daten physikalisch übertragen werden. Sie übergibt ihre Daten einfach an die nächste Schicht.  
+>   
+> Und was passiert, nachdem wir die Daten abgeschickt haben?  
+>   
+> Das erklärt euch nun Bastian.
+
+### Visuelle Einblendungen während Patricks Text
+
+| Zeitpunkt ca. | Einblendung |
+|---|---|
+| 00:25 | „OSI-Modell“ groß auf Folie |
+| 00:35 | „1984 – ISO“ |
+| 00:45 | 7-Schichten-Diagramm erscheint von oben nach unten |
+| 01:00 | Layer 7 wird orange hervorgehoben |
+| 01:15 | Icons: Browser, E-Mail, HTTP, HTTPS, SMTP |
+| 01:45 | Text: „Application Layer = Tor zum Netzwerk“ |
+| 02:10 | Übergangsgrafik: Pfeil nach unten zu Layer 6 |
+
+### Schnittnotiz
+- Patrick endet mit klarer Übergabe an Bastian.
+- Direkt nach „Das erklärt euch nun Bastian.“ harter Schnitt auf Bastian.
+- Keine Musiküberlagerung, die das Sprechen stört.
+
+---
+
+## Szene 2 – Bastian: Darstellungsschicht & Sitzungsschicht  
+**Zeit:** 02:18–04:18  
+**Sprecher:** Bastian  
+**Folie:** Folie 7  
+**Thema:** Layer 6 + Layer 5
+
+### Bildaufbau
+- Bastian übernimmt.
+- Kamera ähnlich wie bei Patrick.
+- Optional: Bildschirmanteile mit Folie „Layer 6 & 5“.
+
+### Lower Third
+**Bastian**  
+*Layer 6 & Layer 5*
+
+### Sprechtext – erweitert
+
+> Danke, Patrick.  
+>   
+> Bevor Daten wirklich ins Netz gehen, müssen sie erst einmal aufbereitet werden.  
+>   
+> Das macht Schicht 6: die Darstellungsschicht, also der Presentation Layer.  
+>   
+> Hier werden Daten formatiert.  
+>   
+> Zum Beispiel werden Bilder in JPEG kodiert, Texte in ASCII oder Unicode dargestellt, und Dateien werden in ein einheitliches Format gebracht, damit verschiedene Systeme sie verstehen können.  
+>   
+> Sehr wichtig in dieser Schicht ist außerdem die Verschlüsselung.  
+>   
+> Wenn ihr sicher im Internet surft, kommt hier zum Beispiel TLS ins Spiel.  
+>   
+> TLS sorgt dafür, dass Daten verschlüsselt übertragen werden und nicht ohne Weiteres mitgelesen werden können.  
+>   
+> Zusätzlich kann in Schicht 6 auch Datenkompression stattfinden.  
+>   
+> Das bedeutet: Große Datenmengen werden kleiner gemacht, damit sie effizienter übertragen werden können.  
+>   
+> Danach folgt Schicht 5: die Sitzungsschicht, der Session Layer.  
+>   
+> Stellt euch diese Schicht wie einen Moderator vor.  
+>   
+> Sie baut die Kommunikationssitzung zwischen zwei Systemen auf.  
+>   
+> Sie hält die Verbindung aktiv.  
+>   
+> Und sie beendet die Sitzung am Ende auch wieder sauber.  
+>   
+> Wenn zum Beispiel eine Verbindung kurz abreißt, kann Schicht 5 dabei helfen, die Kommunikation wieder aufzunehmen, ohne den gesamten Vorgang neu starten zu müssen.  
+>   
+> Kurz gesagt: Schicht 6 bereitet die Daten auf, und Schicht 5 verwaltet den Gesprächsverlauf zwischen den Systemen.  
+>   
+> Wie die Daten nun transportiert werden, zeigt euch Issa.
+
+### Visuelle Einblendungen
+
+| Zeitpunkt ca. | Einblendung |
+|---|---|
+| 02:25 | Layer 6 hervorgehoben |
+| 02:40 | Beispiele: JPEG, ASCII, Unicode |
+| 03:00 | Schloss-Symbol für TLS / Verschlüsselung |
+| 03:15 | Kompressionsgrafik: große Datei wird kleiner |
+| 03:30 | Layer 5 hervorgehoben |
+| 03:45 | Grafik: zwei Computer bauen Verbindung auf |
+| 04:00 | Text: „Sitzung aufbauen – halten – beenden“ |
+| 04:12 | Pfeil nach unten zu Layer 4 |
+
+### Schnittnotiz
+- Bastian spricht ruhig und sachlich.
+- Bei „TLS“ kurz das Schloss-Icon einblenden.
+- Bei „Sitzung“ kann eine einfache Animation zweier verbundener PCs gezeigt werden.
+- Übergabe an Issa klar betonen.
+
+---
+
+## Szene 3 – Issa: Transportschicht & Vermittlungsschicht  
+**Zeit:** 04:18–06:18  
+**Sprecher:** Issa  
+**Folien:** Folie 6 & 5  
+**Thema:** Layer 4 + Layer 3
+
+### Bildaufbau
+- Issa übernimmt.
+- Folie zeigt Transport- und Netzwerkschicht.
+- Grafiken: Segmente, Ports, IP-Adressen, Router, Routingpfad.
+
+### Lower Third
+**Issa**  
+*Layer 4 & Layer 3*
+
+### Sprechtext – erweitert
+
+> Genau.  
+>   
+> Jetzt müssen die Daten reisefertig gemacht werden.  
+>   
+> Das passiert in Schicht 4: der Transportschicht, also dem Transport Layer.  
+>   
+> Hier werden die Daten in Segmente zerlegt.  
+>   
+> Man kann sich das so vorstellen: Eine große Nachricht wird in mehrere kleinere Teile aufgeteilt, damit sie besser übertragen und später wieder zusammengesetzt werden kann.  
+>   
+> In dieser Schicht haben wir vor allem zwei wichtige Protokolle: TCP und UDP.  
+>   
+> TCP steht für eine sichere Übertragung.  
+>   
+> Dabei gibt es empfangsbestätigungen. Wenn ein Segment verloren geht, wird es erneut übertragen.  
+>   
+> Das ist zum Beispiel wichtig bei Downloads, E-Mails oder Webseiten, bei denen Daten vollständig ankommen müssen.  
+>   
+> UDP dagegen ist schneller, aber unzuverlässiger.  
+>   
+> Hier werden Verluste nicht unbedingt korrigiert.  
+>   
+> Das ist sinnvoll bei Videostreams, Online-Spielen oder Voice-over-IP, wo Geschwindigkeit wichtiger ist als perfekte Vollständigkeit.  
+>   
+> Außerdem werden in Schicht 4 die Ports vergeben.  
+>   
+> Ports sagen dem Zielsystem, an welche Anwendung oder welchen Dienst die Daten übergeben werden sollen.  
+>   
+> Dann geht es weiter in Schicht 3: die Vermittlungsschicht, also den Network Layer.  
+>   
+> Hier kommen die IP-Adressen ins Spiel.  
+>   
+> Aus den Segmenten werden Pakete.  
+>   
+> Jedes Paket enthält eine Quell-IP-Adresse und eine Ziel-IP-Adresse.  
+>   
+> Der Router schaut sich die Ziel-IP an und sucht den besten Weg durch das Netzwerk.  
+>   
+> Diesen Vorgang nennt man Routing.  
+>   
+> Vereinfacht gesagt: Schicht 4 regelt den Transport, und Schicht 3 regelt den Weg.  
+>   
+> Thomas erklärt euch jetzt, wie das im lokalen Netz aussieht.
+
+### Visuelle Einblendungen
+
+| Zeitpunkt ca. | Einblendung |
+|---|---|
+| 04:25 | Layer 4 hervorgehoben |
+| 04:40 | Animation: Daten werden in Segmente geteilt |
+| 05:00 | TCP vs. UDP als Vergleichstabelle |
+| 05:15 | Port-Beispiele: 80, 443, 53, 25 |
+| 05:30 | Layer 3 hervorgehoben |
+| 05:45 | IP-Paket mit Quell- und Zieladresse |
+| 06:00 | Router sucht Weg im Netzwerk |
+| 06:12 | Übergabe an Thomas |
+
+### Schnittnotiz
+- TCP/UDP-Vergleich gern als zwei Spalten einblenden.
+- Ports kurz erklären, aber nicht zu sehr vertiefen.
+- Routing-Grafik sollte einen einfachen Pfad von A nach B zeigen.
+
+---
+
+## Szene 4 – Thomas: Sicherungsschicht & Bitübertragungsschicht  
+**Zeit:** 06:18–08:18  
+**Sprecher:** Thomas  
+**Folie:** Folie 4  
+**Thema:** Layer 2 + Layer 1
+
+### Bildaufbau
+- Thomas übernimmt.
+- Fokus auf lokale Netztechnik: Switch, MAC-Adresse, Frame, Kabel, Funk.
+- Visuell: Netzwerk-Switch, Netzwerkkarte, Kabel, WLAN-Symbol.
+
+### Lower Third
+**Thomas**  
+*Layer 2 & Layer 1*
+
+### Sprechtext – erweitert
+
+> Danke, Issa.  
+>   
+> Wenn das IP-Paket bei uns im Hausnetz ankommt, übernimmt Schicht 2: die Sicherungsschicht, also der Data Link Layer.  
+>   
+> Hier arbeiten Switches.  
+>   
+> Die Pakete werden in Frames verpackt.  
+>   
+> Ein Frame enthält unter anderem die MAC-Adressen.  
+>   
+> Die MAC-Adresse ist eine eindeutige Adresse der Netzwerkkarte.  
+>   
+> Über diese MAC-Adresse weiß der Switch, an welchen konkreten Rechner oder welches Gerät im lokalen Netz das Datenpaket weitergeleitet werden muss.  
+>   
+> Man kann sagen: Schicht 3 kümmert sich um den logischen Weg über IP-Adressen, und Schicht 2 kümmert sich um die lokale Zustellung über MAC-Adressen.  
+>   
+> Ganz unten sind wir dann bei Schicht 1 angekommen: der Bitübertragungsschicht, dem Physical Layer.  
+>   
+> Hier gibt es keine Pakete oder Frames mehr.  
+>   
+> Hier gibt es nur noch Nullen und Einsen.  
+>   
+> Das sind rohe Signale.  
+>   
+> Diese Signale können elektrische Spannungen über Kupferkabel sein, Lichtimpulse über Glasfaserkabel oder Funkwellen im WLAN.  
+>   
+> Schicht 1 ist also die Grundlage von allem: Ohne physikalische Übertragung gibt es kein Netzwerk.  
+>   
+> Kurz zusammengefasst: Layer 2 sorgt für die lokale Übertragung zwischen Geräten, und Layer 1 überträgt die Bits tatsächlich über das Medium.  
+>   
+> Adem fasst das nun für uns in der Praxis zusammen.
+
+### Visuelle Einblendungen
+
+| Zeitpunkt ca. | Einblendung |
+|---|---|
+| 06:25 | Layer 2 hervorgehoben |
+| 06:40 | Switch im Rack |
+| 06:55 | Frame mit MAC-Source und MAC-Destination |
+| 07:15 | Layer 1 hervorgehoben |
+| 07:30 | Kupferkabel, Glasfaser, WLAN nacheinander einblenden |
+| 07:50 | Animation: 0 und 1 als Signale |
+| 08:05 | Text: „Ohne Layer 1 kein Netzwerk“ |
+| 08:12 | Übergabe an Adem bzw. kurzer Schwenk zurück zu Bastian |
+
+### Schnittnotiz
+- Thomas sollte nicht zu schnell sprechen.
+- MAC-Adresse kurz betonen: „hardwarenah, lokal, Switch“.
+- Bei Layer 1 gern echte Bilder von Kabeln, Glasfaser und WLAN zeigen.
+
+---
+
+## Szene 5 – Bastian: Exkurs TCP/IP  
+**Zeit:** 08:18–09:18  
+**Sprecher:** Bastian  
+**Folie:** Folie 9  
+**Thema:** OSI vs. TCP/IP
+
+### Bildaufbau
+- Bastian kommt nochmal kurz ins Bild.
+- Folie vergleicht OSI-Modell und TCP/IP-Modell.
+- Grafik: 7 OSI-Schichten links, 4 TCP/IP-Schichten rechts.
+
+### Lower Third
+**Bastian**  
+*TCP/IP-Exkurs*
+
+### Sprechtext
+
+> Bevor wir zum Fazit kommen, noch ein kurzer Vergleich.  
+>   
+> In der echten Welt nutzen wir meistens das TCP/IP-Modell.  
+>   
+> Es ist schlanker und hat nur vier Schichten statt sieben.  
+>   
+> Die oberen drei OSI-Schichten – also Anwendungsschicht, Darstellungsschicht und Sitzungsschicht – werden bei TCP/IP einfach als Anwendungsschicht zusammengefasst.  
+>   
+> Darunter folgen Transportschicht, Internetschicht und Netzzugangsschicht.  
+>   
+> Wichtig für uns ist:  
+>   
+> OSI ist unser theoretisches Referenzmodell.  
+>   
+> TCP/IP ist das Modell, das praktisch im Internet läuft.  
+>   
+> Beide Modelle helfen uns aber dabei, Netzwerkprobleme einzuordnen und zu verstehen.  
+>   
+> Adem übernimmt jetzt das Praxisbeispiel und das Fazit.
+
+### Visuelle Einblendungen
+
+| Zeitpunkt ca. | Einblendung |
+|---|---|
+| 08:20 | Folie „OSI vs. TCP/IP“ |
+| 08:30 | OSI 7 Schichten links |
+| 08:40 | TCP/IP 4 Schichten rechts |
+| 08:50 | Verbindungslinien: Layer 7/6/5 → Application |
+| 09:00 | Text: „OSI = Referenzmodell, TCP/IP = Praxis“ |
+| 09:15 | Schnitt zu Adem |
+
+### Schnittnotiz
+- Dieser Teil darf ruhig und kompakt sein.
+- Nicht zu lange erklären, weil Adem noch das große Praxisfazit hat.
+- Visueller Vergleich ist hier besonders wichtig.
+
+---
+
+## Szene 6 – Adem: Praxisbeispiel, Kapselung & Fazit  
+**Zeit:** 09:18–11:48  
+**Sprecher:** Adem  
+**Folien:** Folie 10–12  
+**Thema:** Kapselung, Troubleshooting, Bedeutung für FISI
+
+### Bildaufbau
+- Adem steht zentral oder leicht seitlich.
+- Folie zeigt Kapselungsprinzip.
+- Animation: HTTP-Request wird Schritt für Schritt verpackt.
+- Danach Troubleshooting-Liste von Layer 1 aufwärts.
+
+### Lower Third
+**Adem**  
+*Praxis & Fazit*
+
+### Sprechtext – erweitert für ca. 2:30 Minuten
+
+> Fassen wir zusammen, wie das Prinzip der Kapselung bei einem Webseitenaufruf aussieht.  
+>   
+> Am Anfang steht eine Anwendung.  
+>   
+> Ihr gebt zum Beispiel eine URL in den Browser ein.  
+>   
+> Daraus entsteht ein HTTP-Request.  
+>   
+> Dieser HTTP-Request befindet sich auf Schicht 7, der Anwendungsschicht.  
+>   
+> Dann geht die Nachricht eine Ebene tiefer.  
+>   
+> Auf Schicht 4, der Transportschicht, wird ein TCP-Header hinzugefügt.  
+>   
+> Dadurch entsteht ein Segment.  
+>   
+> Dieses Segment wird weiter nach unten gereicht.  
+>   
+> Auf Schicht 3, der Vermittlungsschicht, kommt ein IP-Header dazu.  
+>   
+> Jetzt sprechen wir von einem Paket.  
+>   
+> Anschließend geht es auf Schicht 2, die Sicherungsschicht.  
+>   
+> Dort wird ein MAC-Header ergänzt, und oft auch ein Trailer zur Fehlererkennung.  
+>   
+> Daraus wird ein Frame.  
+>   
+> Ganz unten, auf Schicht 1, wird dieser Frame schließlich in Bits umgewandelt und als elektrisches Signal, Lichtsignal oder Funksignal übertragen.  
+>   
+> Wichtig ist dabei: Jede Schicht kennt nur ihre eigene Aufgabe.  
+>   
+> Die untere Schicht muss nicht wissen, ob oben ein Browser, eine E-Mail oder ein Datei-Download läuft.  
+>   
+> Sie hängt einfach ihr eigenes Etikett an die Daten an.  
+>   
+> Beim Empfänger läuft das Ganze dann umgekehrt ab.  
+>   
+> Von unten nach oben wird ausgepackt.  
+>   
+> Erst verschwindet der Frame-Header, dann der IP-Header, dann der TCP-Header, und am Ende liegt wieder die ursprüngliche HTTP-Nachricht bei der Anwendung an.  
+>   
+> Warum lernen wir FISIs das?  
+>   
+> Weil das OSI-Modell unser wichtigstes Werkzeug beim Troubleshooting ist.  
+>   
+> Wenn das Internet nicht funktioniert, suchen wir nicht wahllos.  
+>   
+> Wir gehen strukturiert vor.  
+>   
+> Auf Schicht 1 prüfen wir: Ist das Kabel eingesteckt? Leuchtet der Port? Gibt es ein physikalisches Signal?  
+>   
+> Auf Schicht 2 prüfen wir: Erreicht das Gerät den Switch? Stimmen MAC-Adressen? Gibt es Frame-Fehler?  
+>   
+> Auf Schicht 3 prüfen wir: Hat das Gerät eine gültige IP-Adresse? Stimmt das Gateway? Funktioniert das Routing?  
+>   
+> Auf Schicht 4 prüfen wir: Ist der richtige Port offen? Funktioniert TCP oder UDP? Wird die Verbindung aufgebaut?  
+>   
+> Und ab Schicht 5 bis 7 schauen wir uns Dienste, Sitzungen, Verschlüsselung und Anwendungen an.  
+>   
+> Wer das OSI-Modell kennt, stochert bei der Fehlersuche nicht im Dunkeln.  
+>   
+> Man kann Probleme eingrenzen, systematisch testen und gezielter lösen.  
+>   
+> Genau deshalb ist dieses Modell für uns in der Fachinformatik so wichtig.  
+>   
+> Vielen Dank für eure Aufmerksamkeit.
+
+### Visuelle Einblendungen
+
+| Zeitpunkt ca. | Einblendung |
+|---|---|
+| 09:20 | Titel: „Praxisbeispiel: Webseitenaufruf“ |
+| 09:35 | Browser gibt URL ein |
+| 09:50 | HTTP-Request auf Layer 7 |
+| 10:05 | TCP-Header wird hinzugefügt |
+| 10:20 | IP-Header wird hinzugefügt |
+| 10:35 | MAC-Header / Frame |
+| 10:50 | Bits auf Layer 1 |
+| 11:00 | Animation: Kapselung von oben nach unten |
+| 11:10 | Animation: Entkapselung von unten nach oben |
+| 11:20 | Troubleshooting-Liste Layer 1–7 |
+| 11:35 | Text: „Strukturierte Fehlersuche statt Raten“ |
+| 11:45 | Adem beendet mit Dank |
+
+### Schnittnotiz
+- Das ist der inhaltlich wichtigste Teil.
+- Kapselung unbedingt animiert oder zumindest schrittweise einblenden.
+- Troubleshooting-Liste sollte gut lesbar sein.
+- Adem spricht zum Ende hin etwas langsamer, damit das Fazit wirkt.
+
+---
+
+## Szene 7 – Outro  
+**Zeit:** 11:48–12:00  
+**Sprecher:** keiner  
+**Folie:** Endcard
+
+### Bild
+- Alle fünf Namen erscheinen nochmals.
+- Hintergrund dunkelblau.
+- OSI-Diagramm klein am Rand.
+- Musik blendet kurz auf und dann aus.
+
+### Text auf Endcard
+
+**Vielen Dank!**  
+
+**OSI-Modell – 7 Schichten**  
+**FISI Umschulung – Comcave**  
+
+**Team:**  
+Patrick  
+Bastian  
+Issa  
+Thomas  
+Adem  
+
+### Regie
+- Kein weiterer Speech.
+- 12 Sekunden Endcard.
+- Fade-out über letzte 1–2 Sekunden.
+
+---
+
+# Vollständige Shotlist für die Aufnahme
+
+## Kamera 1 – Hauptkamera
+- Stativ verwenden.
+- Halbnahe Einstellung von der Person.
+- Sprecher mittig oder leicht nach versetzt.
+- Blickrichtung: direkt in Objektiv.
+- Hintergrund ruhig halten.
+
+## Kamera 2 optional – Detail/Präsentation
+- Falls vorhanden: zweite Kamera auf Folien oder Whiteboard.
+- Alternativ: Folien direkt als Bildschirmaufnahme.
+- Für 720p reicht eine Kamera völlig aus, wenn die Folien sauber geschnitten werden.
+
+## Mikrofon
+- Ansteckmikrofon oder Richtmikrofon.
+- Abstand ca. 20–30 cm.
+- Raumhall minimieren.
+- Kein Handy-Mikrofon aus großer Entfernung.
+
+## Beleuchtung
+- Tageslicht oder weiches LED-Licht von vorne.
+- Kein starkes Gegenlicht.
+- Gesicht muss gleichmäßig ausgeleuchtet sein.
+
+---
+
+# Folienplan
+
+## Folie 1 – Titel
+**OSI-Modell**  
+Netzwerkkommunikation in 7 Schichten  
+FISI Umschulung – Comcave  
+Team: Patrick, Bastian, Issa, Thomas, Adem
+
+## Folie 2 – Was ist das OSI-Modell?
+- Entwickelt 1984 von der ISO
+- Referenzmodell für Netzwerkkommunikation
+- Herstellerunabhängige Kommunikation
+- 7 Schichten
+
+## Folie 3 – Die 7 Schichten
+1. Physical Layer  
+2. Data Link Layer  
+3. Network Layer  
+4. Transport Layer  
+5. Session Layer  
+6. Presentation Layer  
+7. Application Layer  
+
+## Folie 4 – Layer 2 & 1
+- Switches
+- MAC-Adressen
+- Frames
+- Bits
+- Kupfer, Glasfaser, WLAN
+
+## Folie 5 – Layer 3
+- IP-Adressen
+- Pakete
+- Router
+- Routing
+
+## Folie 6 – Layer 4
+- Segmente
+- TCP
+- UDP
+- Ports
+
+## Folie 7 – Layer 6 & 5
+- Presentation Layer
+- Formatierung
+- Verschlüsselung
+- Kompression
+- Session Layer
+- Verbindung aufbauen, halten, beenden
+
+## Folie 8 – Layer 7
+- Application Layer
+- HTTP
+- HTTPS
+- SMTP
+- Benutzeranwendungen
+
+## Folie 9 – OSI vs. TCP/IP
+- OSI: 7 Schichten, theoretisches Referenzmodell
+- TCP/IP: 4 Schichten, praktische Internetwelt
+- obere OSI-Schichten → TCP/IP Application Layer
+
+## Folie 10 – Kapselung
+- HTTP → TCP → IP → Frame → Bits
+- Header werden hinzugefügt
+- Each layer adds its own label
+
+## Folie 11 – Troubleshooting
+- Layer 1: Kabel, Signal, Port
+- Layer 2: MAC, Switch, Frame
+- Layer 3: IP, Gateway, Routing
+- Layer 4: Port, TCP/UDP, Verbindung
+- Layer 5–7: Sitzung, Verschlüsselung, Anwendung
+
+## Folie 12 – Fazit
+- OSI hilft bei strukturierter Fehlersuche
+- Wichtig für FISI / IHK
+- Vielen Dank
+
+---
+
+# B-Roll und Grafik-Liste
+
+Folgende visuelle Elemente sollten eingebaut werden:
+
+1. **OSI-7-Schichten-Diagramm**
+   - immer wieder verwenden
+   - aktuelle Schicht hervorheben
+
+2. **Browser-Icon**
+   - für HTTP/HTTPS
+
+3. **E-Mail-Icon**
+   - für SMTP
+
+4. **Schloss-Icon**
+   - für TLS/Verschlüsselung
+
+5. **Kompressionsgrafik**
+   - große Datei → kleine Datei
+
+6. **Zwei Computer mit Verbindung**
+   - für Session Layer
+
+7. **Segmentierungsanimation**
+   - große Nachricht wird in Teile zerlegt
+
+8. **TCP/UDP-Vergleich**
+   - zuverlässig vs. schnell
+
+9. **Port-Grafik**
+   - mehrere Türen an einem Server
+
+10. **Router- und Netzwerkpfad**
+   - Paket bewegt sich durch Netz
+
+11. **Switch und MAC-Adressen**
+   - lokale Zustellung
+
+12. **Kupferkabel, Glasfaser, WLAN**
+   - für Physical Layer
+
+13. **Kapselungsanimation**
+   - Datenpacket wird Schicht für Schicht verpackt
+
+14. **Troubleshooting-Checkliste**
+   - von Layer 1 nach oben
+
+---
+
+# Sprechtempo und Pausen
+
+Damit das Video wirklich auf ca. 12 Minuten kommt, gilt:
+
+- Nicht hetzen.
+- Nach wichtigen Begriffen 1–2 Sekunden Pause.
+- Folienwechsel nicht sofort sprechen.
+- Zwischen den Schichten kurze Atempause.
+- Bei Aufzählungen deutlich betonen:
+  - „Schicht 1“
+  - „Schicht 2“
+  - „Schicht 3“ usw.
+
+Empfohlene Sprechgeschwindigkeit:
+- ca. 120–140 Wörter pro Minute
+- ruhig, verständlich, prüfungstauglich
+
+---
+
+# Übergaberegeln – wichtig für die Gruppe
+
+Jeder Sprecher endet mit einer klaren Übergabe:
+
+- Patrick → Bastian  
+  „Das erklärt euch nun Bastian.“
+
+- Bastian → Issa  
+  „Wie die Daten nun transportiert werden, zeigt euch Issa.“
+
+- Issa → Thomas  
+  „Thomas erklärt euch jetzt, wie das im lokalen Netz aussieht.“
+
+- Thomas → Adem  
+  „Adem fasst das nun für uns in der Praxis zusammen.“
+
+- Adem → Ende  
+  „Vielen Dank für eure Aufmerksamkeit.“
+
+Zusätzlich:
+- Nicht unterbrechen.
+- Nicht ergänzen, wenn man nicht dran ist.
+- Nur der aktuelle Sprecher redet.
+- Folienwechsel übernimmt stumm die Person, die gerade nicht spricht, wenn nötig.
+
+---
+
+# Wenn du das Video mit KI erzeugen willst
+
+Falls du ein KI-Video-Tool verwenden möchtest, kannst du es nicht sinnvoll als ein einziges 12-Minuten-Video generieren lassen. Besser: **Szene für Szene erzeugen** und dann schneiden.
+
+## Genereller Prompt für jedes Szenen-Video
+
+> Create a professional German IT training video in 720p, 16:9, 30 fps. The style is clean, educational, and suitable for an IHK exam presentation. Show a calm presenter in a modern training room or neutral studio background. Include OSI model slides, network diagrams, icons for HTTP, HTTPS, SMTP, TCP, UDP, IP, MAC, switches, routers, cables, fiber optics, and Wi-Fi. Use dark blue and orange color scheme. Add lower thirds with speaker names. No chaotic camera movement. Clear, structured, professional educational video.
+
+## Szenenweise KI-Prompts
+
+### Patrick Szene
+> German IT presenter Patrick introduces the OSI model. Slide shows “OSI Model, 7 layers, ISO 1984”. Highlight Layer 7 Application Layer with browser, email, HTTP, HTTPS, SMTP icons. Professional, calm, 720p, educational style.
+
+### Bastian Szene
+> German IT presenter Bastian explains Layer 6 Presentation Layer and Layer 5 Session Layer. Show data formatting, JPEG, ASCII, TLS encryption lock, compression, session establishment between two computers. Clean slide animation, professional educational video.
+
+### Issa Szene
+> German IT presenter Issa explains Layer 4 Transport Layer and Layer 3 Network Layer. Show segmentation, TCP reliable transfer, UDP fast transfer, ports, IP packets, router routing path. Modern network diagram, 720p, educational style.
+
+### Thomas Szene
+> German IT presenter Thomas explains Layer 2 Data Link Layer and Layer 1 Physical Layer. Show switch, MAC addresses, Ethernet frames, copper cable, fiber optic light pulses, Wi-Fi radio waves, binary bits 0 and 1. Professional technical visualization.
+
+### Bastian TCP/IP Szene
+> Short comparison slide: OSI 7 layers versus TCP/IP 4 layers. Show mapping of OSI layers to TCP/IP layers. Text: “OSI = reference model, TCP/IP = practical Internet model.” Clean infographic style.
+
+### Adem Szene
+> German IT presenter Adem explains encapsulation in practice. Show HTTP request getting TCP header, IP header, MAC header, then converted to bits. Then show troubleshooting from Layer 1 to Layer 7: cable, MAC, IP, port, application. Calm, structured, professional conclusion.
+
+---
+
+# FFmpeg-Exportbefehl nach dem Schnitt
+
+Wenn du das fertige Projektmaterial hast und in 720p exportieren willst, kann ein typischer Befehl so aussehen:
+
+```bash
+ffmpeg -i input.mp4 \
+-c:v libx264 \
+-preset medium \
+-crfs 20 \
+-scale 1280:720 \
+-c:a aac \
+-b:a 192k \
+-ar 48000 \
+-movflags +faststart \
+OSI_Modell_Comcave_720p_12min.mp4
+```
+
+Falls das Quellmaterial bereits 720p ist, reicht oft:
+
+```bash
+ffmpeg -i input.mp4 \
+-c:v libx264 \
+-preset medium \
+-crf 20 \
+-c:a aac \
+-b:a 192k \
+-movflags +faststart \
+OSI_Modell_Comcave_720p_12min.mp4
+```
+
+---
+
+# Qualitätscheckliste vor dem Export
+
+- [ ] Video ist 1280×720 px
+- [ ] Seitenverhältnis ist 16:9
+- [ ] Länge ist maximal 12:00 Minuten
+- [ ] Jeder Sprecher hat seinen festen Part
+- [ ] Es wird nicht dazwischengeredet
+- [ ] Übergänge sind klar
+- [ ] Folien sind gut lesbar
+- [ ] Namen/Rollen werden eingeblendet
+- [ ] OSI-Diagramm wird durchgehend verwendet
+- [ ] Kapselung ist visuell erklärt
+- [ ] Troubleshooting-Teil ist verständlich
+- [ ] Audio ist klar und nicht zu leise
+- [ ] Keine abrupten Lautstärke Sprünge
+- [ ] Ende mit Dankesfolie
+- [ ] Export als MP4, H.264, AAC
+
+---
+
+# Kurzversion als Produktionsanweisung
+
+Erstelle ein **12-minütiges 720p-Erklärvideo** zum OSI-Modell für die FISI-Umschulung bei Comcave.  
+Das Video folgt strikt dem Drehbuch:
+
+1. **Intro** mit Titel und Team.  
+2. **Patrick** erklärt Einführung und Layer 7.  
+3. **Bastian** erklärt Layer 6 und Layer 5.  
+4. **Issa** erklärt Layer 4 und Layer 3.  
+5. **Thomas** erklärt Layer 2 und Layer 1.  
+6. **Bastian** gibt kurzen TCP/IP-Vergleich.  
+7. **Adem** erklärt Kapselung, Praxis und Troubleshooting.  
+8. **Outro** mit Dank und Teamnamen.
+
+Visuell: ruhige Präsentationsaufnahme, OSI-Diagramm, Lower Thirds, klare Folien, technische Icons, Kapselungsanimation, Troubleshooting-Checkliste.  
+Audio: klar, ruhig, professionell, keine Musik während des Sprechens zu laut.  
+Export: 720p, 16:9, 30 fps, MP4, H.264, AAC, max. 12:00 Minuten.
